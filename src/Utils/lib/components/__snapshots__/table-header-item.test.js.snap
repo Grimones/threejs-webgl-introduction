@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<TableHeaderItem /> should render correctly 1`] = `
+<TableHeaderItem>
+  <td
+    data-radium={true}
+    style={
+      Object {
+        "color": "#e01",
+      }
+    }
+  >
+    Header Text
+  </td>
+</TableHeaderItem>
+`;

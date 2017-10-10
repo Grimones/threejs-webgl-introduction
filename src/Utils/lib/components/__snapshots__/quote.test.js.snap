@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Quote /> should render correctly 1`] = `
+<Quote>
+  <span
+    data-radium={true}
+    style={
+      Object {
+        "color": "#ff0",
+      }
+    }
+  >
+    Hello There!
+  </span>
+</Quote>
+`;

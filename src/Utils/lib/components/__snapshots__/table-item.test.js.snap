@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<TableItem /> should render correctly 1`] = `
+<TableItem>
+  <td
+    data-radium={true}
+    style={
+      Object {
+        "color": "#444",
+      }
+    }
+  >
+    Table Item Content
+  </td>
+</TableItem>
+`;

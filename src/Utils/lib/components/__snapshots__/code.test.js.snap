@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Code /> should render correctly. 1`] = `
+<Code>
+  <code
+    dangerouslySetInnerHTML={
+      Object {
+        "__html": "const [a, ...b] = [1, 2, 3, 4]",
+      }
+    }
+    data-radium={true}
+    style={
+      Object {
+        "fontWeight": 500,
+      }
+    }
+  />
+</Code>
+`;
