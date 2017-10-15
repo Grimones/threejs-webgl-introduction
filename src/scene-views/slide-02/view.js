@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { BasicScene } from '../../scenes';
-import { AppearBlock } from '../../../Components';
+import { BasicScene } from '../../three/scenes';
+import { AppearBlock } from '../../components';
 
 const stepLabels = [
   'testing',
@@ -12,7 +12,7 @@ const stepLabels = [
 
 export const steps = stepLabels.length - 1;
 
-export class Scene extends Component {
+export class View extends Component {
   componentDidMount() {
     this.scene = new BasicScene(this.threeCanvas);
     this.scene.loopRender();
@@ -64,6 +64,6 @@ export class Scene extends Component {
   }
 }
 
-Scene.propTypes = {
+View.propTypes = {
   step: PropTypes.number
 };

@@ -6,7 +6,7 @@ import { SplitViewCodeSlide, CodeSlide } from 'spectacle-code-slide';
 import 'normalize.css';
 import 'spectacle/lib/themes/default/index.css';
 
-import * as SlideScenes from './Three/slide-scenes';
+import * as SceneViews from './scene-views';
 
 import createTheme from 'spectacle/lib/themes/default';
 
@@ -54,7 +54,7 @@ class Presentation extends Component {
         contentHeight={window.innerHeight}
         contentWidth={window.innerWidth - 100} >
         <Slide transition={['fade']}>
-          <SlideScenes.Slide02.Scene />
+          <SceneViews.Slide02.View />
           <Heading
             size={1}
             fit
@@ -66,16 +66,16 @@ class Presentation extends Component {
           </Heading>
         </Slide>
         <Slide transition={['fade']} getAppearStep={step => this.setStep('cubeDemoStep', step)}>
-          {this.createSteps(SlideScenes.Slide02.steps)}
-          <SlideScenes.Slide02.Scene step={this.state.cubeDemoStep} />
+          {this.createSteps(SceneViews.Slide02.steps)}
+          <SceneViews.Slide02.View step={this.state.cubeDemoStep} />
         </Slide>
         <SplitViewCodeSlide
           getStep={step => this.setStep('cubeDemoStep2', step)}
-          rightPane={<SlideScenes.Slide02.Scene step={this.state.cubeDemoStep2} />}
+          rightPane={<SceneViews.Slide02.View step={this.state.cubeDemoStep2} />}
           showLineNumbers={false}
           transition={['fade']}
           lang="jsx"
-          code={SlideScenes.Slide02.code}
+          code={SceneViews.Slide02.code}
           ranges={[
             { loc: [0] },
             { loc: [0, 1] },
@@ -86,7 +86,7 @@ class Presentation extends Component {
         <CodeSlide
           transition={['fade']}
           lang="jsx"
-          code={SlideScenes.Slide02.code}
+          code={SceneViews.Slide02.code}
           ranges={[
             { loc: [0, 270], title: 'Walking through some code' },
             { loc: [4, 9], title: 'The Beginning' },
