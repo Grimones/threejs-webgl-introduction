@@ -2,7 +2,7 @@ import * as THREE from 'three';
 import OrbitControls from '../utils/OrbitControls';
 import Stats from 'stats.js';
 
-export default class BasicScene {
+export default class Scene {
   constructor(canvas, showStats, useControls) {
     this.canvas = canvas;
     this.renderer = this.initRenderer(canvas);
@@ -17,14 +17,6 @@ export default class BasicScene {
     this.clock = this.initClock();
     this.requestLoop = undefined;
     this.step = 0;
-
-    const geometry = new THREE.BoxGeometry(10, 10, 10, 1, 1, 1);
-    const wireframe = new THREE.WireframeGeometry(geometry);
-    const line = new THREE.LineSegments(wireframe);
-    line.material.color.setHex(0x000000);
-    this.mesh = new THREE.Mesh(geometry, new THREE.MeshStandardMaterial());
-    this.scene.add(this.mesh);
-    this.mesh.add( line );
   }
 
   initRenderer(canvas) {
@@ -81,17 +73,6 @@ export default class BasicScene {
   }
 
   animate() {
-    const delta = this.clock.getDelta();
-    if (this.step === 1) {
-      this.mesh.rotation.x += delta;
-    }
-    else if (this.step === 2) {
-      this.mesh.rotation.z += delta;
-    }
-    else if (this.step === 3) {
-      this.mesh.rotation.x += delta;
-      this.mesh.rotation.z += delta;
-    }
   }
 
   renderFrame() {

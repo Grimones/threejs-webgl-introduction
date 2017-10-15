@@ -1,3 +1,4 @@
-import * as Slide02 from './slide-02';
+import * as Slide1 from './slide-1';
+import * as Slide2 from './slide-2';
 
-export { Slide02 };
+export { Slide1, Slide2 };

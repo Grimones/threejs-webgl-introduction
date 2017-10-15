@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { Deck, Slide, Heading, Appear } from 'spectacle';
+import { Deck, Slide, Heading, Appear, Text, Notes, List, ListItem } from 'spectacle';
 import { SplitViewCodeSlide, CodeSlide } from 'spectacle-code-slide';
 
 import 'normalize.css';
@@ -15,8 +15,8 @@ import createTheme from 'spectacle/lib/themes/default';
 const theme = createTheme({
   primary: 'white',
   secondary: 'black',
-  quartenary: '#122b45',
-  background: '#03A9FC'
+  quartenary: '#E2336E',
+  background: '#2D2D2D'
 }, {
   primary: { name: 'Roboto', googleFont: true, styles: ['400'] }
 });
@@ -53,29 +53,63 @@ class Presentation extends Component {
         theme={theme}
         contentHeight={window.innerHeight}
         contentWidth={window.innerWidth - 100} >
-        <Slide transition={['fade']}>
-          <SceneViews.Slide02.View />
+        <Slide transition={['fade']} style={{ background: 'linear-gradient(45deg,  #E2336E 0%,#7537E7 100%)'}}>
+          <SceneViews.Slide1.View />
           <Heading
-            size={1}
             fit
-            caps
             lineHeight={1}
             textColor="primary"
             style={{ textShadow: '-0.5px -0.5px 0 #000, 0.5px -0.5px 0 #000, -0.5px 0.5px 0 #000, 0.5px 0.5px 0 #000' }}>
-            Introduction to ThreeJS
+            Introduction to WebGL
+            <div>with ThreeJS</div>
           </Heading>
         </Slide>
-        <Slide transition={['fade']} getAppearStep={step => this.setStep('cubeDemoStep', step)}>
-          {this.createSteps(SceneViews.Slide02.steps)}
-          <SceneViews.Slide02.View step={this.state.cubeDemoStep} />
+        <Slide transition={['fade']} bgColor="background">
+          <Heading
+            fit
+            lineHeight={2}
+            textColor="quartenary">
+            Что такое WebGL?
+          </Heading>
+          <Appear>
+            <Text textSize={40} textColor="primary" style={{ textAlign: 'left' }}>Это программная библиотека для языка программирования JavaScript, позволяющая создавать на JavaScript интерактивную 3D-графику.</Text>
+          </Appear>
+        </Slide>
+        <Slide transition={['fade']} bgColor="background" textColor="primary">
+          <List>
+            <Appear><ListItem>Разработана Khronos Group</ListItem></Appear>
+            <Appear><ListItem>Построена на базе OpenGL ES 2.0</ListItem></Appear>
+            <Appear><ListItem>За счет использования низкоуровневых средств поддержки OpenGL, часть кода на WebGL может выполняться непосредственно на видеокартах</ListItem></Appear>
+            <Appear><ListItem>Является контекстом элемента canvas HTML</ListItem></Appear>
+          </List>
+          <Notes>
+            <ol>
+              <li>
+                Khronos Group - промышленный консорциум, целью которого является выработка открытых стандартов
+                интерфейсов программирования (API) в области создания и воспроизведения динамической графики и
+                звука на широком спектре платформ и устройств, с поддержкой аппаратного ускорения. В консорциум входят более 100 компаний.
+                <br />
+                <br />
+                Vulkan, OpenGL, OpenGL ES, WebGL, Collada
+              </li>
+              <br />
+              <li>
+                OpenGL - (Open Graphics Library) спецификация, определяющая платформонезависимый программный интерфейс для написания приложений, использующих двумерную и трёхмерную компьютерную графику
+              </li>
+              <br />
+              <li>
+                OpenGL ES - embedded systems (Встраиваемые системы). Начиная аж с Symbian
+              </li>
+            </ol>
+          </Notes>
         </Slide>
         <SplitViewCodeSlide
           getStep={step => this.setStep('cubeDemoStep2', step)}
-          rightPane={<SceneViews.Slide02.View step={this.state.cubeDemoStep2} />}
+          rightPane={<SceneViews.Slide2.View step={this.state.cubeDemoStep2} />}
           showLineNumbers={false}
           transition={['fade']}
           lang="jsx"
-          code={SceneViews.Slide02.code}
+          code={SceneViews.Slide2.code}
           ranges={[
             { loc: [0] },
             { loc: [0, 1] },
@@ -86,7 +120,7 @@ class Presentation extends Component {
         <CodeSlide
           transition={['fade']}
           lang="jsx"
-          code={SceneViews.Slide02.code}
+          code={SceneViews.Slide2.code}
           ranges={[
             { loc: [0, 270], title: 'Walking through some code' },
             { loc: [4, 9], title: 'The Beginning' },
