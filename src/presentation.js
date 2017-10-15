@@ -7,6 +7,8 @@ import 'normalize.css';
 import 'spectacle/lib/themes/default/index.css';
 
 import * as SceneViews from './scene-views';
+import * as CodeSnippets from './code-snippets';
+import TeapotImage from './assets/teapot.png';
 
 import createTheme from 'spectacle/lib/themes/default';
 
@@ -102,6 +104,97 @@ class Presentation extends Component {
               </li>
             </ol>
           </Notes>
+        </Slide>
+        <Slide transition={['fade']} bgImage={TeapotImage} bgDarken={0.75}>
+          <Heading
+            fit
+            lineHeight={2}
+            textColor="quartenary">
+            WebGL pipeline
+          </Heading>
+        </Slide>
+        <Slide transition={['fade']} bgColor="background">
+          <Heading
+            fit
+            lineHeight={2}
+            textColor="quartenary">
+            Что необходимо для рендеринга?
+          </Heading>
+          <List textColor="primary">
+            <Appear><ListItem>Canvas</ListItem></Appear>
+            <Appear><ListItem>Точки (вертексы)</ListItem></Appear>
+            <Appear><ListItem>Вертексный шейдер</ListItem></Appear>
+            <Appear><ListItem>Фрагментный шейдер</ListItem></Appear>
+            <Appear><ListItem>Буфферы</ListItem></Appear>
+            <Appear><ListItem>Матрица позиции</ListItem></Appear>
+            <Appear><ListItem>Функция отрисовки</ListItem></Appear>
+          </List>
+        </Slide>
+        <CodeSlide
+          transition={['fade']}
+          lang="jsx"
+          code={CodeSnippets.vertices}
+          ranges={[
+            { loc: [1, 6], title: 'Вертексы (точки)' }
+          ]}
+        />
+        <CodeSlide
+          transition={['fade']}
+          lang="glsl"
+          code={CodeSnippets.vertexShader}
+          ranges={[
+            { loc: [1, 9], title: 'Вертексный шейдер' }
+          ]}
+        />
+        <CodeSlide
+          transition={['fade']}
+          lang="glsl"
+          code={CodeSnippets.fragmentShader}
+          ranges={[
+            { loc: [1, 6], title: 'Фрагментный шейдер' }
+          ]}
+        />
+        <CodeSlide
+          transition={['fade']}
+          lang="jsx"
+          code={CodeSnippets.buffers}
+          ranges={[
+            { loc: [1, 8], title: 'Буфферы' }
+          ]}
+        />
+        <CodeSlide
+          transition={['fade']}
+          lang="jsx"
+          code={CodeSnippets.matrixPosition}
+          ranges={[
+            { loc: [1, 12], title: 'Матрица перспективы' },
+            { loc: [13, 21], title: 'Матрица модели '}
+          ]}
+        />
+        <CodeSlide
+          transition={['fade']}
+          lang="jsx"
+          code={CodeSnippets.drawCall}
+          ranges={[
+            { loc: [1, 12], title: 'Функция отрисовки' }
+          ]}
+        />
+        <Slide transition={['fade']} bgColor="background">
+          <SceneViews.SlideWebGl.View />
+        </Slide>
+        <Slide transition={['fade']} bgColor="background">
+        </Slide>
+        <Slide transition={['fade']} bgColor="background">
+        </Slide>
+        <Slide transition={['fade']} bgColor="background">
+        </Slide>
+        <Slide transition={['fade']} bgColor="background">
+        </Slide>
+        <Slide transition={['fade']} bgColor="background">
+        </Slide>
+        <Slide transition={['fade']} bgColor="background">
+        </Slide>
+        <Slide transition={['fade']} bgColor="background">
         </Slide>
         <SplitViewCodeSlide
           getStep={step => this.setStep('cubeDemoStep2', step)}
