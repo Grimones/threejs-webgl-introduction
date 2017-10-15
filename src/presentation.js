@@ -1,19 +1,16 @@
-// Import React
 import React, { Component } from 'react';
 
-// Import Spectacle Core tags
-import { Deck, Slide, Heading, Appear, Layout, Fill, Fit } from 'spectacle';
-import { SplitViewCodeSlide, CodeSlide } from './lib';
-import CubeDemo from './Components/CubeDemo';
-import { lol } from './assets/code';
+import { Deck, Slide, Heading, Appear } from 'spectacle';
+import { SplitViewCodeSlide, CodeSlide } from 'spectacle-code-slide';
 
-// Import theme
+import 'normalize.css';
+import 'spectacle/lib/themes/default/index.css';
+
+import * as SlideScenes from './Three/slide-scenes';
+
 import createTheme from 'spectacle/lib/themes/default';
 
 // Require CSS
-require('normalize.css');
-require('spectacle/lib/themes/default/index.css');
-import './test.css';
 
 const theme = createTheme({
   primary: 'white',
@@ -42,6 +39,14 @@ class Presentation extends Component {
     }
   }
 
+  createSteps(length) {
+    const steps = [];
+    for (let i = 0; i < length; i++) {
+      steps.push(<Appear key={i}><div /></Appear>);
+    }
+    return steps;
+  }
+
   render() {
     return (
       <Deck
@@ -49,7 +54,7 @@ class Presentation extends Component {
         contentHeight={window.innerHeight}
         contentWidth={window.innerWidth - 100} >
         <Slide transition={['fade']}>
-          <CubeDemo />
+          <SlideScenes.Slide02.Scene />
           <Heading
             size={1}
             fit
@@ -57,35 +62,20 @@ class Presentation extends Component {
             lineHeight={1}
             textColor="primary"
             style={{ textShadow: '-0.5px -0.5px 0 #000, 0.5px -0.5px 0 #000, -0.5px 0.5px 0 #000, 0.5px 0.5px 0 #000' }}>
-          Introduction to ThreeJS
+            Introduction to ThreeJS
           </Heading>
         </Slide>
-        <Slide
-          transition={['fade']} getAppearStep={step => this.setStep('cubeDemoStep', step)}>
-          <CubeDemo step={this.state.cubeDemoStep} />
-          <Appear>
-            <Heading size={1} caps fit textColor="secondary">
-              Rotate X
-            </Heading>
-          </Appear>
-          <Appear>
-            <Heading size={1} caps fit textColor="secondary">
-              Rotate Y
-            </Heading>
-          </Appear>
-          <Appear>
-            <Heading size={1} caps fit textColor="background">
-              Rotate both X and Y
-            </Heading>
-          </Appear>
+        <Slide transition={['fade']} getAppearStep={step => this.setStep('cubeDemoStep', step)}>
+          {this.createSteps(SlideScenes.Slide02.steps)}
+          <SlideScenes.Slide02.Scene step={this.state.cubeDemoStep} />
         </Slide>
         <SplitViewCodeSlide
-          getStep={(step, total) => this.setStep('cubeDemoStep2', step)}
-          rightPane={<CubeDemo step={this.state.cubeDemoStep2} />}
+          getStep={step => this.setStep('cubeDemoStep2', step)}
+          rightPane={<SlideScenes.Slide02.Scene step={this.state.cubeDemoStep2} />}
           showLineNumbers={false}
-          transition={[]}
+          transition={['fade']}
           lang="jsx"
-          code={lol}
+          code={SlideScenes.Slide02.code}
           ranges={[
             { loc: [0] },
             { loc: [0, 1] },
@@ -94,16 +84,14 @@ class Presentation extends Component {
           ]}
         />
         <CodeSlide
-          getStep={(step, total) => console.log(step, total)}
-          transition={[]}
+          transition={['fade']}
           lang="jsx"
-          code={lol}
+          code={SlideScenes.Slide02.code}
           ranges={[
             { loc: [0, 270], title: 'Walking through some code' },
             { loc: [4, 9], title: 'The Beginning' },
             { loc: [1, 2] },
             { loc: [33, 43], note: 'Heres a note!' }
-            // ...
           ]}
         />
       </Deck>
