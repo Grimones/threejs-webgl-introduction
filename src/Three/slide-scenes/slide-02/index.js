@@ -1,3 +1,3 @@
-export { Scene } from './slide';
-export { steps } from './slide';
+export { Scene } from './scene';
+export { steps } from './scene';
 export { code } from './code';
