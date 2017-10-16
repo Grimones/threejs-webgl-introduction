@@ -4,17 +4,17 @@ import { Slide5Scene } from '../../three/scenes';
 import { AppearBlock } from '../../components';
 
 const stepLabels = [
-  'grid',
-  'vertices',
-  'positions',
-  'edges',
-  'face',
-  'animate face',
-  'hide grid and positions',
-  'show RT grid',
-  'show RT face',
-  'Rotate camera',
-  'rotate back'
+  '',
+  'Есть вертексы',
+  'Каждый вертекс позиционируется с помощью вертексного шейдера',
+  'Далее они соединяются',
+  'Образуя полигон',
+  '',
+  'После чего',
+  'Происходит растеризация',
+  'И каждый пиксель',
+  'Закрашивается с помощью фрагментного (пиксельного) шейдера',
+  ''
 ];
 
 export const steps = stepLabels.length - 1;
@@ -57,8 +57,8 @@ export class View extends Component {
         }}>
         <AppearBlock
           label={stepLabels[this.props.step]}
-          backgroundColor="papayawhip"
-          textColor="tomato"
+          backgroundColor="rgba(45, 45, 45, 0.8)"
+          textColor="white"
         />
         <canvas
           style={{ position: 'absolute', left: 0, top: 0 }}

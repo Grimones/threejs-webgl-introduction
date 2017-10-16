@@ -74,6 +74,14 @@ export default class Scene extends BasicScene {
     }
     else if (this.step === 9) {
       this.animateCamera();
+      anime({
+        targets: this.RTMesh.material.color,
+        r: 0.886,
+        g: 0.2,
+        b: 0.431,
+        easing: 'easeInOutQuad',
+        duration: 700
+      });
       this.rotateFace = true;
     }
     else if (this.step === 10) {
