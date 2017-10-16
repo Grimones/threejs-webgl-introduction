@@ -3,7 +3,7 @@ import BasicScene from './BasicScene';
 
 export default class Scene extends BasicScene {
   constructor(canvas, showStats, useControls) {
-    super(canvas, showStats, true);
+    super(canvas, showStats, useControls);
 
     this.initMesh().then(mesh => {
       this.mesh = mesh;
