@@ -30,8 +30,7 @@ class Presentation extends Component {
     super(props);
 
     this.state = {
-      cubeDemoStep: 0,
-      cubeDemoStep2: 0
+      slide5: 0
     };
   }
 
@@ -55,6 +54,7 @@ class Presentation extends Component {
         theme={theme}
         contentHeight={window.innerHeight}
         contentWidth={window.innerWidth - 100} >
+        {/* 1 */}
         <Slide transition={['fade']} style={{ background: 'linear-gradient(45deg,  #E2336E 0%,#7537E7 100%)'}}>
           <SceneViews.Slide1.View />
           <Heading
@@ -63,9 +63,10 @@ class Presentation extends Component {
             textColor="primary"
             style={{ textShadow: '-0.5px -0.5px 0 #000, 0.5px -0.5px 0 #000, -0.5px 0.5px 0 #000, 0.5px 0.5px 0 #000' }}>
             Introduction to WebGL
-            <div>with ThreeJS</div>
+            <div>with Three.js</div>
           </Heading>
         </Slide>
+        {/* 2 */}
         <Slide transition={['fade']} bgColor="background">
           <Heading
             fit
@@ -77,6 +78,7 @@ class Presentation extends Component {
             <Text textSize={40} textColor="primary" style={{ textAlign: 'left' }}>Это программная библиотека для языка программирования JavaScript, позволяющая создавать на JavaScript интерактивную 3D-графику.</Text>
           </Appear>
         </Slide>
+        {/* 3 */}
         <Slide transition={['fade']} bgColor="background" textColor="primary">
           <List>
             <Appear><ListItem>Разработана Khronos Group</ListItem></Appear>
@@ -105,6 +107,7 @@ class Presentation extends Component {
             </ol>
           </Notes>
         </Slide>
+        {/* 4 */}
         <Slide transition={['fade']} bgImage={TeapotImage} bgDarken={0.75}>
           <Heading
             fit
@@ -112,6 +115,11 @@ class Presentation extends Component {
             textColor="quartenary">
             WebGL pipeline
           </Heading>
+        </Slide>
+        {/* 5 */}
+        <Slide transition={['fade']} bgColor="background" getAppearStep={step => this.setStep('slide5', step)} >
+          {this.createSteps(SceneViews.Slide5.steps)}
+          <SceneViews.Slide5.View step={this.state.slide5} />
         </Slide>
         <Slide transition={['fade']} bgColor="background">
           <Heading
@@ -133,51 +141,8 @@ class Presentation extends Component {
         <CodeSlide
           transition={['fade']}
           lang="jsx"
-          code={CodeSnippets.vertices}
-          ranges={[
-            { loc: [1, 6], title: 'Вертексы (точки)' }
-          ]}
-        />
-        <CodeSlide
-          transition={['fade']}
-          lang="glsl"
-          code={CodeSnippets.vertexShader}
-          ranges={[
-            { loc: [1, 9], title: 'Вертексный шейдер' }
-          ]}
-        />
-        <CodeSlide
-          transition={['fade']}
-          lang="glsl"
-          code={CodeSnippets.fragmentShader}
-          ranges={[
-            { loc: [1, 6], title: 'Фрагментный шейдер' }
-          ]}
-        />
-        <CodeSlide
-          transition={['fade']}
-          lang="jsx"
-          code={CodeSnippets.buffers}
-          ranges={[
-            { loc: [1, 8], title: 'Буфферы' }
-          ]}
-        />
-        <CodeSlide
-          transition={['fade']}
-          lang="jsx"
-          code={CodeSnippets.matrixPosition}
-          ranges={[
-            { loc: [1, 12], title: 'Матрица перспективы' },
-            { loc: [13, 21], title: 'Матрица модели '}
-          ]}
-        />
-        <CodeSlide
-          transition={['fade']}
-          lang="jsx"
-          code={CodeSnippets.drawCall}
-          ranges={[
-            { loc: [1, 12], title: 'Функция отрисовки' }
-          ]}
+          code={SceneViews.SlideWebGl.code}
+          ranges={SceneViews.SlideWebGl.ranges}
         />
         <Slide transition={['fade']} bgColor="background">
           <SceneViews.SlideWebGl.View />

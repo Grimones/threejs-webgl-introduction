@@ -1,5 +1,3 @@
-import { mat4 } from 'gl-matrix';
-
 export default class Scene {
   constructor(canvas) {
     this.gl = this.initWebGL(canvas);
@@ -37,7 +35,7 @@ export default class Scene {
     precision mediump float;
 
     void main(void) {
-      gl_FragColor = vec4(1.0, 1.0, 1.0, 1.0);
+      gl_FragColor = vec4(0.886, 0.2, 0.431, 1.0);
     }
     `;
   }

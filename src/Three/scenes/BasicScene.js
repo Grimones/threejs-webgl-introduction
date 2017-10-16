@@ -31,7 +31,7 @@ export default class Scene {
   }
 
   initCamera() {
-    const camera = new THREE.PerspectiveCamera(60, this.canvas.width / this.canvas.height, 10, 10000);
+    const camera = new THREE.PerspectiveCamera(60, this.canvas.width / this.canvas.height, 1, 10000);
     camera.position.setZ(30);
     return camera;
   }
