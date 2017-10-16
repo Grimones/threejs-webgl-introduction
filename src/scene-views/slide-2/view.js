@@ -16,6 +16,7 @@ export class View extends Component {
   componentDidMount() {
     this.scene = new BasicScene(this.threeCanvas);
     this.scene.loopRender();
+    window.addEventListener('resize', this.handleResize);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -35,6 +36,11 @@ export class View extends Component {
     this.scene.stop();
     this.scene.dispose();
     this.scene = null;
+    window.removeEventListener('resize', this.handleResize);
+  }
+
+  handleResize = () => {
+    this.scene.resizeRenderer(window.innerWidth, window.innerHeight);
   }
 
   render() {

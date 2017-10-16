@@ -63,12 +63,9 @@ export default class Scene {
     this.step = step;
   }
 
-  resizeRenderer(viewport) {
-    const { width, height } = viewport;
+  resizeRenderer(width, height) {
     this.renderer.setSize(width, height);
     this.camera.aspect = width / height;
-    this.camera.position.setX(0);
-    this.camera.position.setY(0);
     this.camera.updateProjectionMatrix();
   }
 
