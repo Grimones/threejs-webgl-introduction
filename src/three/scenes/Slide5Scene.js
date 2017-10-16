@@ -20,30 +20,26 @@ export default class Scene extends BasicScene {
   setStep(step) {
     super.setStep(step);
     if (this.step === 0) {
-      this.face.vertex1.hideMesh();
-      this.face.vertex2.hideMesh();
-      this.face.vertex3.hideMesh();
+      this.face.hideVertices();
     }
     else if (this.step === 1) {
-      this.face.vertex1.showMesh();
-      this.face.vertex2.showMesh();
-      this.face.vertex3.showMesh();
-      this.face.vertex1.hideLabel();
-      this.face.vertex2.hideLabel();
-      this.face.vertex3.hideLabel();
+      this.face.showVertices();
+      this.face.hidePositionLabels();
     }
     else if (this.step === 2) {
-      this.face.vertex1.showLabel();
-      this.face.vertex2.showLabel();
-      this.face.vertex3.showLabel();
-      this.edges.hideMesh();
+      this.face.showPositionLabels();
+      this.face.hideEdges();
     }
     else if (this.step === 3) {
-      this.rotateFace = false;
-      this.rotateBack();
-      this.edges.showMesh();
+      this.face.showEdges();
+      this.face.hideMesh();
     }
     else if (this.step === 4) {
+      this.face.showMesh();
+      this.rotateFace = false;
+      this.rotateBack();
+    }
+    else if (this.step === 5) {
       this.rotateFace = true;
     }
   }
@@ -60,37 +56,10 @@ export default class Scene extends BasicScene {
     const vertPos2 = new THREE.Vector3(-4, -3, 0);
     const vertPos3 = new THREE.Vector3(4, -3, 0);
 
-    const vertex1 = new Vertex(vertPos1, new THREE.Vector3(0, 7.5, 0));
-    const vertex2 = new Vertex(vertPos2, new THREE.Vector3(-5, -3.5, 0));
-    const vertex3 = new Vertex(vertPos3, new THREE.Vector3(5, -3.5, 0));
+    const face = new Face(vertPos1, vertPos2, vertPos3);
+    this.scene.add(face.group);
 
-    const edge1 = new Edge(vertPos1, vertPos2);
-    const edge2 = new Edge(vertPos2, vertPos3);
-    const edge3 = new Edge(vertPos3, vertPos1);
-
-    const mainGroup = new THREE.Group();
-    mainGroup.add(
-      vertex1.group, vertex2.group, vertex3.group,
-      edge1.mesh, edge2.mesh, edge3.mesh
-    );
-
-    this.scene.add(mainGroup);
-
-    const showVertices = () => {
-      vertex1.showMesh();
-      vertex2.showMesh();
-      vertex3.showMesh();
-    };
-
-    const hideVertices = () => {
-
-    };
-    return {
-      mainGroup,
-      vertex1,
-      vertex2,
-      vertex3
-    };
+    return face;
   }
 
   initEdges() {
@@ -100,12 +69,13 @@ export default class Scene extends BasicScene {
   }
 
   rotateBack() {
-    const currentRotation = THREE.Math.radToDeg(this.face.mainGroup.rotation.z);
+    const currentRotation = THREE.Math.radToDeg(this.face.group.rotation.z);
     const backRotation = currentRotation - (currentRotation % 360);
     anime({
-      targets: this.face.mainGroup.rotation,
+      targets: this.face.group.rotation,
       z: THREE.Math.degToRad(backRotation),
-      duration: 2000
+      duration: 2000,
+      update: () => this.face.updatePositionLabels()
     });
   }
 
@@ -113,10 +83,8 @@ export default class Scene extends BasicScene {
     super.animate();
     const delta = this.clock.getDelta();
     if (this.rotateFace) {
-      this.face.mainGroup.rotation.z -= delta;
-      this.face.vertex1.updateLabel();
-      this.face.vertex2.updateLabel();
-      this.face.vertex3.updateLabel();
+      this.face.group.rotation.z -= delta;
+      this.face.updatePositionLabels();
     }
   }
 }
@@ -248,20 +216,118 @@ class Face {
   constructor(vertPos1, vertPos2, vertPos3) {
     this.vertices = this.initVertices(vertPos1, vertPos2, vertPos3);
     this.edges = this.initEdges(vertPos1, vertPos2, vertPos3);
-    this.face = this.initFace(vertPos1, vertPos2, vertPos3);
-    this.group = initGroup();
+    this.mesh = this.initMesh(vertPos1, vertPos2, vertPos3);
+    this.group = this.initGroup();
   }
 
   initVertices(vertPos1, vertPos2, vertPos3) {
     const labelPos1 = vertPos1.clone();
     labelPos1.y += 2.5;
     const labelPos2 = vertPos2.clone();
+    labelPos2.x -= 1;
+    labelPos2.y -= 1.5;
     const labelPos3 = vertPos3.clone();
+    labelPos3.x += 1;
+    labelPos3.y -= 1.5;
 
-    const vertex1 = new Vertex(vertPos1, new THREE.Vector3(0, 7.5, 0));
-    const vertex2 = new Vertex(vertPos2, new THREE.Vector3(-5, -3.5, 0));
-    const vertex3 = new Vertex(vertPos3, new THREE.Vector3(5, -3.5, 0));
+    const vertex1 = new Vertex(vertPos1, labelPos1);
+    const vertex2 = new Vertex(vertPos2, labelPos2);
+    const vertex3 = new Vertex(vertPos3, labelPos3);
 
     return [vertex1, vertex2, vertex3];
+  }
+
+  initEdges(vertPos1, vertPos2, vertPos3) {
+    const edge1 = new Edge(vertPos1, vertPos2);
+    const edge2 = new Edge(vertPos2, vertPos3);
+    const edge3 = new Edge(vertPos3, vertPos1);
+
+    return [edge1, edge2, edge3];
+  }
+
+  initMesh(vertPos1, vertPos2, vertPos3) {
+    const vecForward = new THREE.Vector3().setZ(1);
+
+    const geometry = new THREE.Geometry();
+    geometry.vertices.push(vertPos1);
+    geometry.vertices.push(vertPos2);
+    geometry.vertices.push(vertPos3);
+    geometry.faces.push(new THREE.Face3(0, 1, 2, vecForward));
+
+    const material = new THREE.MeshStandardMaterial({ color: '#FFF', transparent: true, opacity: 0 });
+
+    const mesh = new THREE.Mesh(geometry, material);
+    return mesh;
+  }
+
+  initGroup() {
+    const group = new THREE.Group();
+
+    for (let i = 0; i < 3; i++) {
+      group.add(this.vertices[i].group, this.edges[i].mesh);
+    }
+    group.add(this.mesh);
+
+    return group;
+  }
+
+  showVertices() {
+    for (let i = 0; i < 3; i++) {
+      this.vertices[i].showMesh();
+    }
+  }
+
+  hideVertices() {
+    for (let i = 0; i < 3; i++) {
+      this.vertices[i].hideMesh();
+    }
+  }
+
+  showPositionLabels() {
+    for (let i = 0; i < 3; i++) {
+      this.vertices[i].showLabel();
+    }
+  }
+
+  hidePositionLabels() {
+    for (let i = 0; i < 3; i++) {
+      this.vertices[i].hideLabel();
+    }
+  }
+
+  updatePositionLabels() {
+    for (let i = 0; i < 3; i++) {
+      this.vertices[i].updateLabel();
+    }
+  }
+
+  showEdges() {
+    for (let i = 0; i < 3; i++) {
+      this.edges[i].showMesh();
+    }
+  }
+
+  hideEdges() {
+    for (let i = 0; i < 3; i++) {
+      this.edges[i].hideMesh();
+    }
+  }
+
+  showMesh() {
+    anime({
+      targets: this.mesh.material,
+      opacity: 1,
+      easing: 'easeInOutQuad',
+      duration: 700
+    });
+  }
+
+  hideMesh() {
+    anime({
+      targets: this.mesh.material,
+      opacity: 0,
+      easing: 'easeInOutQuad',
+      duration: 700
+    });
   }
 }

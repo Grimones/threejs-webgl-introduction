@@ -7,6 +7,8 @@ const stepLabels = [
   'grid',
   'vertices',
   'positions',
+  'edges',
+  'face',
   'animate'
 ];
 
