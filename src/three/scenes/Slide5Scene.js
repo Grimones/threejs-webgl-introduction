@@ -1,17 +1,13 @@
 import * as THREE from 'three';
 import { SpriteText2D, textAlign } from 'three-text2d';
 import { MeshLine, MeshLineMaterial } from 'three.meshline';
+import OrbitControls from '../utils/OrbitControls';
 import BasicScene from './BasicScene';
 import anime from 'animejs';
 
 export default class Scene extends BasicScene {
   constructor(canvas, showStats, useControls) {
-    super(canvas, showStats, useControls);
-
-    this.camera.position.set(0, -2, 20);
-    this.camera.lookAt(new THREE.Vector3(0, -2, 0));
-    this.controls.target.set(0, -2, 0);
-
+    super(canvas, showStats, false);
     this.grid = this.initGrid();
     this.face = this.initFace();
 
@@ -50,9 +46,21 @@ export default class Scene extends BasicScene {
     else if (this.step === 5) {
       this.rotateFace = true;
       this.showGrid();
+      this.face.showPositionLabels();
+      this.face.showEdges();
+      this.face.showVertices();
     }
     else if (this.step === 6) {
       this.face.hidePositionLabels();
+      this.face.hideEdges();
+      this.face.hideVertices();
+      this.face.changeColor(0.886, 0.2, 0.431);
+      anime({
+        targets: this.camera.position,
+        z: 15,
+        easing: 'easeInOutQuad',
+        duration: 700
+      });
       this.hideGrid();
       this.hideRTGrid();
     }
@@ -107,7 +115,7 @@ export default class Scene extends BasicScene {
     geometry.vertices.push(vertPos3);
     geometry.faces.push(new THREE.Face3(0, 1, 2, vecForward));
 
-    const material = new THREE.MeshBasicMaterial({ color: '#FFF' });
+    const material = new THREE.MeshBasicMaterial({ color: '#ccc' });
 
     const mesh = new THREE.Mesh(geometry, material);
     this.RTScene.add(mesh);
@@ -157,7 +165,7 @@ export default class Scene extends BasicScene {
     });
     material.needsUpdate = true;
     const mesh = new THREE.Mesh(geometry, material);
-    mesh.position.setZ(10);
+    mesh.position.setZ(0.2);
     mesh.position.setY(-2);
     // mesh.visible = false;
     this.scene.add(mesh);
@@ -167,7 +175,7 @@ export default class Scene extends BasicScene {
   initRTGrid() {
     const gridHelper = new THREE.GridHelper( 100, 240 );
     gridHelper.rotateX(THREE.Math.degToRad(90));
-    gridHelper.translateY(10.01);
+    gridHelper.translateY(0.21);
     gridHelper.material.transparent = true;
     gridHelper.material.depthTest = false;
     gridHelper.material.opacity = 0;
@@ -230,7 +238,25 @@ export default class Scene extends BasicScene {
   }
 
   animateCamera() {
-
+    anime({
+      targets: this.RTMesh.position,
+      z: 5,
+      easing: 'easeInOutQuad',
+      duration: 700
+    });
+    anime({
+      targets: this.RTGrid.position,
+      z: 5.01,
+      easing: 'easeInOutQuad',
+      duration: 700
+    });
+    anime({
+      targets: this.camera.position,
+      x: 10,
+      z: 15,
+      easing: 'easeInOutQuad',
+      duration: 700
+    });
   }
 
   animateCameraBack() {
@@ -255,6 +281,7 @@ export default class Scene extends BasicScene {
 
   animate() {
     super.animate();
+    this.camera.lookAt(new THREE.Vector3(0, 0, 0));
     const delta = this.clock.getDelta();
     if (this.rotateFace) {
       this.face.group.rotation.z -= delta;
@@ -434,7 +461,7 @@ class Face {
     geometry.vertices.push(vertPos3);
     geometry.faces.push(new THREE.Face3(0, 1, 2, vecForward));
 
-    const material = new THREE.MeshStandardMaterial({ color: '#FFF', transparent: true, opacity: 0 });
+    const material = new THREE.MeshBasicMaterial({ depthTest: false, color: '#FFF', transparent: true, opacity: 0 });
 
     const mesh = new THREE.Mesh(geometry, material);
     return mesh;
@@ -506,6 +533,17 @@ class Face {
     anime({
       targets: this.mesh.material,
       opacity: 0,
+      easing: 'easeInOutQuad',
+      duration: 700
+    });
+  }
+
+  changeColor(r, g, b) {
+    anime({
+      targets: this.mesh.material.color,
+      r: r,
+      g: g,
+      b: b,
       easing: 'easeInOutQuad',
       duration: 700
     });
