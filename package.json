@@ -1,11 +1,11 @@
 {
-  "name": "tiwall",
+  "name": "webgl-threejs-intro",
   "version": "1.0.0",
-  "description": "Threejs introduction presentation",
-  "homepage": "https://yuberion@bitbucket.org/yuberion/tiwall.git",
+  "description": "WebGL and Threejs introduction presentation",
+  "homepage": "TODO",
   "repository": {
     "type": "git",
-    "url": "https://yuberion@bitbucket.org/yuberion/tiwall.git"
+    "url": "TODO"
   },
   "author": {
     "name": "Andrew Razumovsky",
@@ -15,6 +15,7 @@
   "private": true,
   "dependencies": {
     "autoprefixer": "7.1.2",
+    "animejs": "^2.2.0",
     "babel-core": "6.25.0",
     "babel-eslint": "7.2.3",
     "babel-jest": "20.0.3",
@@ -54,6 +55,8 @@
     "style-loader": "0.18.2",
     "sw-precache-webpack-plugin": "0.11.4",
     "three": "^0.87.1",
+    "three-text2d": "^0.3.4",
+    "three.meshline": "^1.0.3",
     "url-loader": "0.5.9",
     "webpack": "3.5.1",
     "webpack-dev-server": "2.7.1",
