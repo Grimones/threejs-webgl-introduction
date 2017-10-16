@@ -1,16 +1,12 @@
 import React, { Component } from 'react';
-
-import { Deck, Slide, Heading, Appear, Text, Notes, List, ListItem } from 'spectacle';
-import { SplitViewCodeSlide, CodeSlide } from 'spectacle-code-slide';
-
 import 'normalize.css';
 import 'spectacle/lib/themes/default/index.css';
-
-import * as SceneViews from './scene-views';
-
 import createTheme from 'spectacle/lib/themes/default';
 
-// Require CSS
+import { Deck, Slide, Heading, Appear, Text, Notes, List, ListItem } from 'spectacle';
+import { CodeSlide } from 'spectacle-code-slide';
+
+import * as SceneViews from './scene-views';
 
 const theme = createTheme({
   primary: 'white',
@@ -21,7 +17,9 @@ const theme = createTheme({
   primary: { name: 'Roboto', googleFont: true, styles: ['400'] }
 });
 
-// style={{ background: 'linear-gradient(to bottom,  #11e8bb 0%,#8200c9 100%)'}}
+const gradients = {
+  pinkVioletGradient: 'linear-gradient(45deg,  #E2336E 0%,#7537E7 100%)'
+};
 
 class Presentation extends Component {
   constructor(props) {
@@ -53,7 +51,7 @@ class Presentation extends Component {
         contentHeight={window.innerHeight}
         contentWidth={window.innerWidth - 100} >
         {/* 1  intro */}
-        <Slide transition={['fade']} style={{ background: 'linear-gradient(45deg,  #E2336E 0%,#7537E7 100%)'}}>
+        <Slide transition={['fade']} style={{ background: gradients.pinkVioletGradient }}>
           <SceneViews.Slide1.View />
           <Appear>
             <Heading fit lineHeight={1} textColor="background">
@@ -157,46 +155,25 @@ class Presentation extends Component {
         </Slide>
         <Slide transition={['fade']} bgColor="background">
         </Slide>
-        <Slide transition={['fade']} bgColor="background">
-        </Slide>
-        <Slide transition={['fade']} bgColor="background">
-        </Slide>
-        <Slide transition={['fade']} bgColor="background">
-        </Slide>
-        <Slide transition={['fade']} bgColor="background">
-        </Slide>
-        <Slide transition={['fade']} bgColor="background">
-        </Slide>
-        <Slide transition={['fade']} bgColor="background">
-        </Slide>
-        <SplitViewCodeSlide
-          getStep={step => this.setStep('cubeDemoStep2', step)}
-          rightPane={<SceneViews.Slide2.View step={this.state.cubeDemoStep2} />}
-          showLineNumbers={false}
-          transition={['fade']}
-          lang="jsx"
-          code={SceneViews.Slide2.code}
-          ranges={[
-            { loc: [0] },
-            { loc: [0, 1] },
-            { loc: [24, 25] },
-            { loc: [53, 56] }
-          ]}
-        />
-        <CodeSlide
-          transition={['fade']}
-          lang="jsx"
-          code={SceneViews.Slide2.code}
-          ranges={[
-            { loc: [0, 270], title: 'Walking through some code' },
-            { loc: [4, 9], title: 'The Beginning' },
-            { loc: [1, 2] },
-            { loc: [33, 43], note: 'Heres a note!' }
-          ]}
-        />
       </Deck>
     );
   }
 }
 
 export default Presentation;
+
+
+/* <SplitViewCodeSlide
+  getStep={step => this.setStep('cubeDemoStep2', step)}
+  rightPane={<SceneViews.Slide2.View step={this.state.cubeDemoStep2} />}
+  showLineNumbers={false}
+  transition={['fade']}
+  lang="jsx"
+  code={SceneViews.Slide2.code}
+  ranges={[
+    { loc: [0] },
+    { loc: [0, 1] },
+    { loc: [24, 25] },
+    { loc: [53, 56] }
+  ]}
+/> */
