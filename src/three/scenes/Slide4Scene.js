@@ -37,7 +37,7 @@ export default class Scene extends BasicScene {
   animate() {
     super.animate();
     if (this.mesh) {
-      const delta = this.clock.getDelta();
+      const delta = this.clock.getDelta() / 2;
       this.mesh.rotation.y -= delta;
     }
   }
