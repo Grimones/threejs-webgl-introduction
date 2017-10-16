@@ -183,13 +183,13 @@ export default class Scene {
     this.rotation += delta;
   }
 
-  render = time => { // render(time){} 
+  render = time => { // render(time){...} 
     const now = time * 0.001;
     const delta = now - this.then;
     this.then = now;
-
     this.drawScene(delta);
-    this.requestLoop = requestAnimationFrame(this.render); //(this.render.bind(this))
+    this.requestLoop = requestAnimationFrame(this.render); 
+    //(this.render.bind(this))
   }
 
   stop() {
@@ -209,15 +209,18 @@ export const ranges = [
   { loc: [186, 187], note: 'Переводим в секунды' },
   { loc: [187, 188], note: 'Узнаем разницу во времени между текущим кадром и предыдущим' },
   { loc: [188, 189], note: 'Обновляем время предыдущего кадра' },
-  { loc: [190, 191], title: 'Рисуем все' },
+  { loc: [189, 190], title: 'Рисуем все' },
   { loc: [171, 172], note: 'Получаем разницу во времени кадров как параметр' },
+  { loc: [176, 177], note: 'После перемещения матрицы' },
   { loc: [177, 178], note: 'Крутим матрицу' },
-  { loc: [119, 143], title: 'Суровейшая функция' },
-  { loc: [143, 156], note: '...' },
-  { loc: [156, 170], note: '...' },
+  { loc: [119, 140], title: 'Суровейшая функция' },
+  { loc: [141, 161], note: '...' },
+  { loc: [162, 170], note: '...' },
   { loc: [177, 178], note: 'Крутим матрицу' },
-  { loc: [182, 183], note: 'Прибавляем эту разницу к величени вращения' },
-  { loc: [191, 192], note: 'После чего опять вызываем функцию рендера' },
+  { loc: [182, 183], note: 'Прибавляем эту разницу к величине вращения' },
+  { loc: [189, 190], title: 'Рисуем все' },
+  { loc: [190, 191], note: 'После чего опять вызываем функцию рендера' },
+  { loc: [191, 192], note: 'Если без стрелочной функции' },
   { loc: [194, 199], title: 'Функция остановки рендеринга' },
   { loc: [196, 197], note: 'Просто останавливаем используя ID' }
 ];
