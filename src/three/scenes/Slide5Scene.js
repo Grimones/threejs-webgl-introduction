@@ -11,6 +11,7 @@ export default class Scene extends BasicScene {
     this.grid = this.initGrid();
     this.face = this.initFace();
 
+    this.camera.position.z -= 8;
     this.RTCamera = this.initRTCamera();
     this.RTScene = this.initRTScene();
     this.RTTexture = this.initRTTexture();
@@ -313,7 +314,7 @@ class Vertex {
   }
 
   initMesh(position) {
-    const geometry = new THREE.SphereGeometry(0.25, 16, 16);
+    const geometry = new THREE.SphereGeometry(0.5, 16, 16);
     const material = new THREE.MeshStandardMaterial({
       color: '#E2336E',
       transparent: true,

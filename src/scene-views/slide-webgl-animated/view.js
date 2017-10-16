@@ -8,6 +8,10 @@ export class View extends Component {
     this.scene.render();
   }
 
+  componentWillUnmount() {
+    this.scene.stop();
+  }
+
   render() {
     return (
       <div

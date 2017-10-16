@@ -54,19 +54,28 @@ class Presentation extends Component {
         theme={theme}
         contentHeight={window.innerHeight}
         contentWidth={window.innerWidth - 100} >
-        {/* 1 */}
+        {/* 1  intro */}
         <Slide transition={['fade']} style={{ background: 'linear-gradient(45deg,  #E2336E 0%,#7537E7 100%)'}}>
           <SceneViews.Slide1.View />
-          <Heading
-            fit
-            lineHeight={1}
-            textColor="primary"
-            style={{ textShadow: '-0.5px -0.5px 0 #000, 0.5px -0.5px 0 #000, -0.5px 0.5px 0 #000, 0.5px 0.5px 0 #000' }}>
-            Introduction to WebGL
-            <div>with Three.js</div>
-          </Heading>
+          <Appear>
+            <Heading
+              fit
+              lineHeight={1}
+              textColor="#2D2D2D">
+          WebGL
+            </Heading>
+          </Appear>
+          <Appear>
+
+            <Heading
+              fit
+              lineHeight={1}
+              textColor="#2D2D2D">
+            Three.js
+            </Heading>
+          </Appear>
         </Slide>
-        {/* 2 */}
+        {/* 2 what is WebGL */}
         <Slide transition={['fade']} bgColor="background">
           <Heading
             fit
@@ -78,7 +87,7 @@ class Presentation extends Component {
             <Text textSize={40} textColor="primary" style={{ textAlign: 'left' }}>Это программная библиотека для языка программирования JavaScript, позволяющая создавать на JavaScript интерактивную 3D-графику.</Text>
           </Appear>
         </Slide>
-        {/* 3 */}
+        {/* 3 More info about WebGL */}
         <Slide transition={['fade']} bgColor="background" textColor="primary">
           <List>
             <Appear><ListItem>Разработана Khronos Group</ListItem></Appear>
@@ -107,21 +116,23 @@ class Presentation extends Component {
             </ol>
           </Notes>
         </Slide>
-        {/* 4 */}
-        <Slide transition={['fade']} bgColor="background" bgDarken={0.75}>
+        {/* 4 Teapot */}
+        <Slide transition={['fade']} bgColor="background">
           <SceneViews.Slide4.View />
           <Heading
             fit
             lineHeight={2}
+            bold
             textColor="quartenary">
             WebGL pipeline
           </Heading>
         </Slide>
-        {/* 5 */}
+        {/* 5 The pipeline itself */}
         <Slide transition={['fade']} bgColor="background" getAppearStep={step => this.setStep('slide5', step)} >
           {this.createSteps(SceneViews.Slide5.steps)}
           <SceneViews.Slide5.View step={this.state.slide5} />
         </Slide>
+        {/* 6 Things we need for render */}
         <Slide transition={['fade']} bgColor="background">
           <Heading
             fit
@@ -131,30 +142,33 @@ class Presentation extends Component {
           </Heading>
           <List textColor="primary">
             <Appear><ListItem>Canvas</ListItem></Appear>
-            <Appear><ListItem>Точки (вертексы)</ListItem></Appear>
+            <Appear><ListItem>Точки || вертексы || вершины</ListItem></Appear>
             <Appear><ListItem>Вертексный шейдер</ListItem></Appear>
             <Appear><ListItem>Фрагментный шейдер</ListItem></Appear>
             <Appear><ListItem>Буфферы</ListItem></Appear>
-            <Appear><ListItem>Матрица позиции</ListItem></Appear>
+            <Appear><ListItem>Матрицы вьюпорта и модели</ListItem></Appear>
             <Appear><ListItem>Функция отрисовки</ListItem></Appear>
           </List>
         </Slide>
+        {/* 7 WebGL sample code */}
         <CodeSlide
           transition={['fade']}
           lang="jsx"
           code={SceneViews.SlideWebGl.code}
           ranges={SceneViews.SlideWebGl.ranges}
         />
+        {/* 8 WebGL sample*/}
         <Slide transition={['fade']} bgColor="background">
           <SceneViews.SlideWebGl.View />
         </Slide>
-        {/* WebGL animated */}
+        {/* 9 WebGL animated sample code */}
         <CodeSlide
           transition={['fade']}
           lang="jsx"
           code={SceneViews.SlideWebGlAnimated.code}
           ranges={SceneViews.SlideWebGlAnimated.ranges}
         />
+        {/* 10 WebGL animated sample */}
         <Slide transition={['fade']} bgColor="background">
           <SceneViews.SlideWebGlAnimated.View />
         </Slide>

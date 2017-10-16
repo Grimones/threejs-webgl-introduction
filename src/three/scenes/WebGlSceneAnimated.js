@@ -9,6 +9,7 @@ export default class Scene {
     this.gl.clearColor(0.0, 0.0, 0.0, 0.0);
     this.then = 0;
     this.rotation = 0;
+    this.requestLoop = undefined;
   }
 
   initWebGL(canvas) {
@@ -164,9 +165,6 @@ export default class Scene {
       out[14] = a[14];
       out[15] = a[15];
     }
-    console.log('====================================');
-    console.log(out);
-    console.log('====================================');
     return out;
   }
 
@@ -190,6 +188,12 @@ export default class Scene {
     this.then = now;
 
     this.drawScene(delta || 0); // prevent of passing NaN on first frame
-    requestAnimationFrame(this.render);
+    this.requestLoop = requestAnimationFrame(this.render);
+  }
+
+  stop() {
+    if (this.requestLoop) {
+      cancelAnimationFrame(this.requestLoop);
+    }
   }
 }
