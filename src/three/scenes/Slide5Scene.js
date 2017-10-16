@@ -14,6 +14,14 @@ export default class Scene extends BasicScene {
 
     this.grid = this.initGrid();
     this.face = this.initFace();
+
+    this.RTCamera = this.initRTCamera();
+    this.RTScene = this.initRTScene();
+    this.RTTexture = this.initRTTexture();
+    this.RTMesh = this.initRTMesh();
+    this.RTFace = this.initRTFace();
+    this.RTGrid = this.initRTGrid();
+
     this.rotateFace = false;
   }
 
@@ -41,12 +49,36 @@ export default class Scene extends BasicScene {
     }
     else if (this.step === 5) {
       this.rotateFace = true;
+      this.showGrid();
+    }
+    else if (this.step === 6) {
+      this.face.hidePositionLabels();
+      this.hideGrid();
+      this.hideRTGrid();
+    }
+    else if (this.step === 7) {
+      this.showRTGrid();
+      this.hideRTMesh();
+    }
+    else if (this.step === 8) {
+      this.showRTMesh();
+      this.animateCameraBack();
+    }
+    else if (this.step === 9) {
+      this.animateCamera();
+      this.rotateFace = true;
+    }
+    else if (this.step === 10) {
+      this.rotateFace = false;
+      this.rotateBack();
     }
   }
 
   initGrid() {
     const gridHelper = new THREE.GridHelper( 100, 100 );
     gridHelper.rotateX(THREE.Math.degToRad(90));
+    gridHelper.material.transparent = true;
+    gridHelper.material.depthTest = false;
     this.scene.add(gridHelper);
     return gridHelper;
   }
@@ -62,10 +94,147 @@ export default class Scene extends BasicScene {
     return face;
   }
 
-  initEdges() {
-    const edge1 = new Edge(this.face.vertex1.mesh.position, this.face.vertex2.mesh.position);
-    this.scene.add(edge1.mesh);
-    return edge1;
+  initRTFace() {
+    const vertPos1 = new THREE.Vector3(0, 5, 0);
+    const vertPos2 = new THREE.Vector3(-4, -3, 0);
+    const vertPos3 = new THREE.Vector3(4, -3, 0);
+
+    const vecForward = new THREE.Vector3().setZ(1);
+
+    const geometry = new THREE.Geometry();
+    geometry.vertices.push(vertPos1);
+    geometry.vertices.push(vertPos2);
+    geometry.vertices.push(vertPos3);
+    geometry.faces.push(new THREE.Face3(0, 1, 2, vecForward));
+
+    const material = new THREE.MeshBasicMaterial({ color: '#FFF' });
+
+    const mesh = new THREE.Mesh(geometry, material);
+    this.RTScene.add(mesh);
+    return mesh;
+  }
+
+  initRTCamera() {
+    const camera = new THREE.PerspectiveCamera(60, this.canvas.width / this.canvas.height, 1, 10000);
+    camera.position.set(0, -2, 20);
+    camera.lookAt(new THREE.Vector3(0, -2, 0));
+    return camera;
+  }
+
+  initRTScene() {
+    const scene = new THREE.Scene();
+    scene.add(new THREE.HemisphereLight(0xffffff, 0x000000, 1));
+    scene.add(new THREE.AmbientLight(0xffffff, 1));
+    // const mesh = new THREE.Mesh(new THREE.SphereGeometry(10, 16, 16), new THREE.MeshBasicMaterial());
+    // scene.add(mesh);
+    return scene;
+  }
+
+  initRTTexture() {
+    return new THREE.WebGLRenderTarget(
+      64,
+      64,
+      {
+        anisotropy: 0,
+        minFilter: THREE.NearestFilter,
+        magFilter: THREE.NearestFilter,
+        format: THREE.RGBFormat
+      }
+    );
+
+  }
+
+  initRTMesh() {
+    const size = 23.5;
+    const geometry = new THREE.PlaneGeometry(size * this.camera.aspect, size);
+    const material = new THREE.MeshBasicMaterial({
+      alphaMap: this.RTTexture.texture,
+      map: this.RTTexture.texture,
+      depthTest: false,
+      transparent: true,
+      opacity: 0,
+      side: THREE.DoubleSide
+    });
+    material.needsUpdate = true;
+    const mesh = new THREE.Mesh(geometry, material);
+    mesh.position.setZ(10);
+    mesh.position.setY(-2);
+    // mesh.visible = false;
+    this.scene.add(mesh);
+    return mesh;
+  }
+
+  initRTGrid() {
+    const gridHelper = new THREE.GridHelper( 100, 240 );
+    gridHelper.rotateX(THREE.Math.degToRad(90));
+    gridHelper.translateY(10.01);
+    gridHelper.material.transparent = true;
+    gridHelper.material.depthTest = false;
+    gridHelper.material.opacity = 0;
+    this.scene.add(gridHelper);
+    return gridHelper;
+  }
+
+  showRTMesh() {
+    anime({
+      targets: this.RTMesh.material,
+      opacity: 1,
+      easing: 'easeInOutQuad',
+      duration: 700
+    });
+  }
+
+  hideRTMesh() {
+    anime({
+      targets: this.RTMesh.material,
+      opacity: 0,
+      easing: 'easeInOutQuad',
+      duration: 700
+    });
+  }
+
+  hideGrid() {
+    anime({
+      targets: this.grid.material,
+      opacity: 0,
+      easing: 'easeInOutQuad',
+      duration: 700
+    });
+  }
+
+  showGrid() {
+    anime({
+      targets: this.grid.material,
+      opacity: 1,
+      easing: 'easeInOutQuad',
+      duration: 700
+    });
+  }
+
+  hideRTGrid() {
+    anime({
+      targets: this.RTGrid.material,
+      opacity: 0,
+      easing: 'easeInOutQuad',
+      duration: 700
+    });
+  }
+
+  showRTGrid() {
+    anime({
+      targets: this.RTGrid.material,
+      opacity: 1,
+      easing: 'easeInOutQuad',
+      duration: 700
+    });
+  }
+
+  animateCamera() {
+
+  }
+
+  animateCameraBack() {
+
   }
 
   rotateBack() {
@@ -77,6 +246,11 @@ export default class Scene extends BasicScene {
       duration: 2000,
       update: () => this.face.updatePositionLabels()
     });
+    anime({
+      targets: this.RTFace.rotation,
+      z: THREE.Math.degToRad(backRotation),
+      duration: 2000
+    });
   }
 
   animate() {
@@ -84,8 +258,14 @@ export default class Scene extends BasicScene {
     const delta = this.clock.getDelta();
     if (this.rotateFace) {
       this.face.group.rotation.z -= delta;
+      this.RTFace.rotation.z -= delta;
       this.face.updatePositionLabels();
     }
+  }
+
+  renderFrame() {
+    super.renderFrame();
+    this.renderer.render(this.RTScene, this.RTCamera, this.RTTexture, true);
   }
 }
 

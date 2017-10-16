@@ -9,7 +9,12 @@ const stepLabels = [
   'positions',
   'edges',
   'face',
-  'animate'
+  'animate face',
+  'hide grid and positions',
+  'show RT grid',
+  'show RT face',
+  'Rotate camera',
+  'rotate back'
 ];
 
 export const steps = stepLabels.length - 1;
