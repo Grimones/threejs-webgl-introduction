@@ -148,6 +148,16 @@ class Presentation extends Component {
         <Slide transition={['fade']} bgColor="background">
           <SceneViews.SlideWebGl.View />
         </Slide>
+        {/* WebGL animated */}
+        <CodeSlide
+          transition={['fade']}
+          lang="jsx"
+          code={SceneViews.SlideWebGlAnimated.code}
+          ranges={SceneViews.SlideWebGlAnimated.ranges}
+        />
+        <Slide transition={['fade']} bgColor="background">
+          <SceneViews.SlideWebGlAnimated.View />
+        </Slide>
         <Slide transition={['fade']} bgColor="background">
         </Slide>
         <Slide transition={['fade']} bgColor="background">
