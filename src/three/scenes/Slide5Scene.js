@@ -175,7 +175,6 @@ export default class Scene extends BasicScene {
     const mesh = new THREE.Mesh(geometry, material);
     mesh.position.setZ(0.2);
     mesh.position.setY(-2);
-    // mesh.visible = false;
     this.scene.add(mesh);
     return mesh;
   }

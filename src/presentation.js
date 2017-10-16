@@ -108,7 +108,8 @@ class Presentation extends Component {
           </Notes>
         </Slide>
         {/* 4 */}
-        <Slide transition={['fade']} bgImage={TeapotImage} bgDarken={0.75}>
+        <Slide transition={['fade']} bgColor="background" bgDarken={0.75}>
+          <SceneViews.Slide4.View />
           <Heading
             fit
             lineHeight={2}
