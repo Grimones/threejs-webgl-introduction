@@ -7,8 +7,6 @@ import 'normalize.css';
 import 'spectacle/lib/themes/default/index.css';
 
 import * as SceneViews from './scene-views';
-import * as CodeSnippets from './code-snippets';
-import TeapotImage from './assets/teapot.png';
 
 import createTheme from 'spectacle/lib/themes/default';
 
@@ -58,33 +56,25 @@ class Presentation extends Component {
         <Slide transition={['fade']} style={{ background: 'linear-gradient(45deg,  #E2336E 0%,#7537E7 100%)'}}>
           <SceneViews.Slide1.View />
           <Appear>
-            <Heading
-              fit
-              lineHeight={1}
-              textColor="#2D2D2D">
-          WebGL
+            <Heading fit lineHeight={1} textColor="background">
+              WebGL
             </Heading>
           </Appear>
           <Appear>
-
-            <Heading
-              fit
-              lineHeight={1}
-              textColor="#2D2D2D">
-            Three.js
+            <Heading fit lineHeight={1}textColor="background">
+              Three.js
             </Heading>
           </Appear>
         </Slide>
         {/* 2 what is WebGL */}
         <Slide transition={['fade']} bgColor="background">
-          <Heading
-            fit
-            lineHeight={2}
-            textColor="quartenary">
+          <Heading fit lineHeight={2} textColor="quartenary">
             Что такое WebGL?
           </Heading>
           <Appear>
-            <Text textSize={40} textColor="primary" style={{ textAlign: 'left' }}>Это программная библиотека для языка программирования JavaScript, позволяющая создавать на JavaScript интерактивную 3D-графику.</Text>
+            <Text textSize={40} textColor="primary" style={{ textAlign: 'left' }}>
+              Это программная библиотека для языка программирования JavaScript, позволяющая создавать на JavaScript интерактивную 3D-графику.
+            </Text>
           </Appear>
         </Slide>
         {/* 3 More info about WebGL */}
@@ -119,11 +109,7 @@ class Presentation extends Component {
         {/* 4 Teapot */}
         <Slide transition={['fade']} bgColor="background">
           <SceneViews.Slide4.View />
-          <Heading
-            fit
-            lineHeight={2}
-            bold
-            textColor="quartenary">
+          <Heading fit lineHeight={2} bold textColor="quartenary">
             WebGL pipeline
           </Heading>
         </Slide>
@@ -134,10 +120,7 @@ class Presentation extends Component {
         </Slide>
         {/* 6 Things we need for render */}
         <Slide transition={['fade']} bgColor="background">
-          <Heading
-            fit
-            lineHeight={2}
-            textColor="quartenary">
+          <Heading fit lineHeight={2} textColor="quartenary">
             Что необходимо для рендеринга?
           </Heading>
           <List textColor="primary">
@@ -154,23 +137,23 @@ class Presentation extends Component {
         <CodeSlide
           transition={['fade']}
           lang="jsx"
-          code={SceneViews.SlideWebGl.code}
-          ranges={SceneViews.SlideWebGl.ranges}
+          code={SceneViews.Slide8.code}
+          ranges={SceneViews.Slide8.ranges}
         />
         {/* 8 WebGL sample*/}
         <Slide transition={['fade']} bgColor="background">
-          <SceneViews.SlideWebGl.View />
+          <SceneViews.Slide8.View />
         </Slide>
         {/* 9 WebGL animated sample code */}
         <CodeSlide
           transition={['fade']}
           lang="jsx"
-          code={SceneViews.SlideWebGlAnimated.code}
-          ranges={SceneViews.SlideWebGlAnimated.ranges}
+          code={SceneViews.Slide10.code}
+          ranges={SceneViews.Slide10.ranges}
         />
         {/* 10 WebGL animated sample */}
         <Slide transition={['fade']} bgColor="background">
-          <SceneViews.SlideWebGlAnimated.View />
+          <SceneViews.Slide10.View />
         </Slide>
         <Slide transition={['fade']} bgColor="background">
         </Slide>

@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { WebGlSceneAnimated } from '../../three/scenes';
+import { Slide10Scene } from '../../three/scenes';
 
 export class View extends Component {
   componentDidMount() {
-    this.scene = new WebGlSceneAnimated(this.canvas);
+    this.scene = new Slide10Scene(this.canvas);
     this.scene.render();
   }
 

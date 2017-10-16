@@ -2,7 +2,14 @@ import * as Slide1 from './slide-1';
 import * as Slide2 from './slide-2';
 import * as Slide4 from './slide-4';
 import * as Slide5 from './slide-5';
-import * as SlideWebGl from './slide-webgl';
-import * as SlideWebGlAnimated from './slide-webgl-animated';
+import * as Slide8 from './slide-8';
+import * as Slide10 from './slide-10';
 
-export { Slide1, Slide2, Slide4, Slide5, SlideWebGl, SlideWebGlAnimated };
+export {
+  Slide1,
+  Slide2,
+  Slide4,
+  Slide5,
+  Slide8,
+  Slide10
+};

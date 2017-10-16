@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { WebGlScene } from '../../three/scenes';
+import { Slide8Scene } from '../../three/scenes';
 
 export class View extends Component {
   componentDidMount() {
-    this.scene = new WebGlScene(this.canvas);
+    this.scene = new Slide8Scene(this.canvas);
     this.scene.drawScene();
   }
 
