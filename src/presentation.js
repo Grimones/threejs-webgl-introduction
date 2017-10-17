@@ -31,7 +31,8 @@ class Presentation extends Component {
       slide19: 0,
       slide20: 0,
       slide21: 0,
-      slide22: 0
+      slide22: 0,
+      slide23: 0
     };
   }
 
@@ -271,7 +272,9 @@ class Presentation extends Component {
 
 
         {/* 23 Material settings */}
-        <Slide transition={['fade']} bgColor="background">
+        <Slide transition={['fade']} bgColor="background" getAppearStep={step => this.setStep('slide23', step)} >
+          {this.createSteps(SceneViews.Slide23.steps)}
+          <SceneViews.Slide23.View step={this.state.slide23} />
         </Slide>
         {/* 25 Light types */}
         <Slide transition={['fade']} bgColor="background">

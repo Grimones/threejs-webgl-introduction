@@ -141,42 +141,42 @@ PMREMCubeUVPacker.prototype = {
       },
 
       vertexShader:
-    'precision highp float;\
-				varying vec2 vUv;\
-				void main() {\
-					vUv = uv;\
-					gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );\
-				}',
+          'precision highp float;\
+          varying vec2 vUv;\
+          void main() {\
+            vUv = uv;\
+            gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );\
+          }',
 
       fragmentShader:
-    'precision highp float;\
-				varying vec2 vUv;\
-				uniform samplerCube envMap;\
-				uniform float mapSize;\
-				uniform vec3 testColor;\
-				uniform int faceIndex;\
-				\
-				void main() {\
-					vec3 sampleDirection;\
-					vec2 uv = vUv;\
-					uv = uv * 2.0 - 1.0;\
-					uv.y *= -1.0;\
-					if(faceIndex == 0) {\
-						sampleDirection = normalize(vec3(1.0, uv.y, -uv.x));\
-					} else if(faceIndex == 1) {\
-						sampleDirection = normalize(vec3(uv.x, 1.0, uv.y));\
-					} else if(faceIndex == 2) {\
-						sampleDirection = normalize(vec3(uv.x, uv.y, 1.0));\
-					} else if(faceIndex == 3) {\
-						sampleDirection = normalize(vec3(-1.0, uv.y, uv.x));\
-					} else if(faceIndex == 4) {\
-						sampleDirection = normalize(vec3(uv.x, -1.0, -uv.y));\
-					} else {\
-						sampleDirection = normalize(vec3(-uv.x, uv.y, -1.0));\
-					}\
-					vec4 color = envMapTexelToLinear( textureCube( envMap, sampleDirection ) );\
-					gl_FragColor = linearToOutputTexel( color );\
-				}',
+          'precision highp float;\
+          varying vec2 vUv;\
+          uniform samplerCube envMap;\
+          uniform float mapSize;\
+          uniform vec3 testColor;\
+          uniform int faceIndex;\
+          \
+          void main() {\
+            vec3 sampleDirection;\
+            vec2 uv = vUv;\
+            uv = uv * 2.0 - 1.0;\
+            uv.y *= -1.0;\
+            if(faceIndex == 0) {\
+              sampleDirection = normalize(vec3(1.0, uv.y, -uv.x));\
+            } else if(faceIndex == 1) {\
+              sampleDirection = normalize(vec3(uv.x, 1.0, uv.y));\
+            } else if(faceIndex == 2) {\
+              sampleDirection = normalize(vec3(uv.x, uv.y, 1.0));\
+            } else if(faceIndex == 3) {\
+              sampleDirection = normalize(vec3(-1.0, uv.y, uv.x));\
+            } else if(faceIndex == 4) {\
+              sampleDirection = normalize(vec3(uv.x, -1.0, -uv.y));\
+            } else {\
+              sampleDirection = normalize(vec3(-uv.x, uv.y, -1.0));\
+            }\
+            vec4 color = envMapTexelToLinear( textureCube( envMap, sampleDirection ) );\
+            gl_FragColor = linearToOutputTexel( color );\
+          }',
 
       blending: THREE.CustomBlending,
       premultipliedAlpha: false,
@@ -193,5 +193,6 @@ PMREMCubeUVPacker.prototype = {
   }
 
 };
+
 
 export default PMREMCubeUVPacker;
