@@ -26,7 +26,8 @@ class Presentation extends Component {
     super(props);
 
     this.state = {
-      slide5: 0
+      slide5: 0,
+      slide19: 0
     };
   }
 
@@ -217,7 +218,7 @@ class Presentation extends Component {
             Hello Three.js
           </Heading>
         </Slide>
-        {/* 6 How Three.js works*/}
+        {/* 16 How Three.js works*/}
         <Slide transition={['fade']} bgColor="background">
           <Heading fit lineHeight={1} textColor="quartenary">
             Как работает Three.js?
@@ -242,8 +243,10 @@ class Presentation extends Component {
         <Slide transition={['fade']} bgColor="background">
           <SceneViews.Slide18.View />
         </Slide>
-        {/* 19 */}
-        <Slide transition={['fade']} bgColor="background">
+        {/* 19 Continue sample */}
+        <Slide transition={['fade']} bgColor="background" getAppearStep={step => this.setStep('slide19', step)} >
+          {this.createSteps(SceneViews.Slide19.steps)}
+          <SceneViews.Slide19.View step={this.state.slide19} />
         </Slide>
         {/* 20 */}
         <Slide transition={['fade']} bgColor="background">
