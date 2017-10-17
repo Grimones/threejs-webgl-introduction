@@ -252,7 +252,9 @@ class Presentation extends Component {
 
 
         {/* 20 Camera types */}
-        <Slide transition={['fade']} bgColor="background">
+        <Slide transition={['fade']} bgColor="background" getAppearStep={step => this.setStep('slide20', step)} >
+          {this.createSteps(SceneViews.Slide20.steps)}
+          <SceneViews.Slide20.View step={this.state.slide20} />
         </Slide>
         {/* 21 Geometry types */}
         <Slide transition={['fade']} bgColor="background" getAppearStep={step => this.setStep('slide21', step)} >

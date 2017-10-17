@@ -92,7 +92,7 @@ export default class Scene extends BasicScene {
   }
 
   initGrid() {
-    const gridHelper = new THREE.GridHelper( 100, 100 );
+    const gridHelper = new THREE.GridHelper( 100, 100, '#111', '#777' );
     gridHelper.rotateX(THREE.Math.degToRad(90));
     gridHelper.material.transparent = true;
     gridHelper.material.depthTest = false;
@@ -181,7 +181,7 @@ export default class Scene extends BasicScene {
   }
 
   initRTGrid() {
-    const gridHelper = new THREE.GridHelper( 100, 240 );
+    const gridHelper = new THREE.GridHelper( 100, 240, '#777', '#777' );
     gridHelper.rotateX(THREE.Math.degToRad(90));
     gridHelper.translateY(0.21);
     gridHelper.material.transparent = true;
