@@ -30,7 +30,8 @@ class Presentation extends Component {
       slide5: 0,
       slide19: 0,
       slide20: 0,
-      slide21: 0
+      slide21: 0,
+      slide22: 0
     };
   }
 
@@ -165,7 +166,7 @@ class Presentation extends Component {
           </Heading>
         </Slide>
         {/* 12 About Three.js */}
-        <Slide transition={['fade']} bgImage="assets/three-bg.jpg" bgDarken={0.85}>
+        <Slide bgImage="assets/three-bg.jpg" bgDarken={0.85}>
           <Appear>
             <Heading textColor="primary" textSize={200}>
               36.000 &#9733;
@@ -173,6 +174,16 @@ class Presentation extends Component {
           </Appear>
           <Appear>
             <Heading textColor="accent" textSize={200}>
+              13.000 forks
+            </Heading>
+          </Appear>
+          <Appear>
+            <Heading fit textColor="primary" textSize={200}>
+              20.000 commits
+            </Heading>
+          </Appear>
+          <Appear>
+            <Heading fit textColor="accent" textSize={200}>
               860 contributors
             </Heading>
           </Appear>
@@ -252,12 +263,13 @@ class Presentation extends Component {
           {this.createSteps(SceneViews.Slide21.steps)}
           <SceneViews.Slide21.View step={this.state.slide21} />
         </Slide>
-
-
-
         {/* 22 Materials */}
-        <Slide transition={['fade']} bgColor="background">
+        <Slide transition={['fade']} bgColor="background" getAppearStep={step => this.setStep('slide22', step)} >
+          {this.createSteps(SceneViews.Slide22.steps)}
+          <SceneViews.Slide22.View step={this.state.slide22} />
         </Slide>
+
+
         {/* 23 Material settings */}
         <Slide transition={['fade']} bgColor="background">
         </Slide>

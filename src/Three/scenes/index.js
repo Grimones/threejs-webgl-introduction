@@ -10,3 +10,4 @@ export { default as Slide18Scene } from './Slide18Scene';
 export { default as Slide19Scene } from './Slide19Scene';
 export { default as Slide20Scene } from './Slide20Scene';
 export { default as Slide21Scene } from './Slide21Scene';
+export { default as Slide22Scene } from './Slide22Scene';
