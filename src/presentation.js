@@ -217,19 +217,30 @@ class Presentation extends Component {
             Hello Three.js
           </Heading>
         </Slide>
-        {/* 16 Three.js sample code*/}
+        {/* 6 How Three.js works*/}
+        <Slide transition={['fade']} bgColor="background">
+          <Heading fit lineHeight={1} textColor="quartenary">
+            Как работает Three.js?
+          </Heading>
+          <List textColor="primary">
+            <Appear><ListItem>WebGLRenderer</ListItem></Appear>
+            <Appear><ListItem>Canvas</ListItem></Appear>
+            <Appear><ListItem>Камера</ListItem></Appear>
+            <Appear><ListItem>Сцена</ListItem></Appear>
+            <Appear><ListItem>Модели</ListItem></Appear>
+            <Appear><ListItem>Свет</ListItem></Appear>
+          </List>
+        </Slide>
+        {/* 17 Three.js sample code*/}
         <CodeSlide
           transition={['fade']}
           lang="jsx"
-          code={SceneViews.Slide17.code}
-          ranges={SceneViews.Slide17.ranges}
+          code={SceneViews.Slide18.code}
+          ranges={SceneViews.Slide18.ranges}
         />
-        {/* 17 Three.js sample */}
+        {/* 18 Three.js sample */}
         <Slide transition={['fade']} bgColor="background">
-          <SceneViews.Slide17.View />
-        </Slide>
-        {/* 18 */}
-        <Slide transition={['fade']} bgColor="background">
+          <SceneViews.Slide18.View />
         </Slide>
         {/* 19 */}
         <Slide transition={['fade']} bgColor="background">

@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Slide17Scene } from '../../three/scenes';
+import { Slide18Scene } from '../../three/scenes';
 
 export class View extends Component {
   componentDidMount() {
-    this.scene = new Slide17Scene(this.canvas);
+    this.scene = new Slide18Scene(this.canvas, false, true);
     this.scene.loopRender();
     window.addEventListener('resize', this.handleResize);
   }
