@@ -10,7 +10,7 @@ export default class Scene extends BasicScene {
 
   initCube() {
     const geometry = new THREE.BoxGeometry(10, 10, 10, 1, 1, 1);
-    const mesh = new THREE.Mesh(geometry, new THREE.MeshStandardMaterial());
+    const mesh = new THREE.Mesh(geometry, new THREE.MeshStandardMaterial({color: '#fff', metalness: 0.1, roughness: 1.0 }));
     this.scene.add(mesh);
     return mesh;
   }

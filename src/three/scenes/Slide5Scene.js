@@ -11,7 +11,7 @@ export default class Scene extends BasicScene {
     this.grid = this.initGrid();
     this.face = this.initFace();
 
-    this.camera.position.z -= 8;
+    this.camera.position.z;
     this.RTCamera = this.initRTCamera();
     this.RTScene = this.initRTScene();
     this.RTTexture = this.initRTTexture();
@@ -58,7 +58,7 @@ export default class Scene extends BasicScene {
       this.face.changeColor(0.886, 0.2, 0.431);
       anime({
         targets: this.camera.position,
-        z: 15,
+        z: 20,
         easing: 'easeInOutQuad',
         duration: 700
       });
@@ -261,7 +261,7 @@ export default class Scene extends BasicScene {
     anime({
       targets: this.camera.position,
       x: 10,
-      z: 15,
+      z: 20,
       easing: 'easeInOutQuad',
       duration: 700
     });

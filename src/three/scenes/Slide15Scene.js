@@ -5,6 +5,7 @@ export default class Scene extends BasicScene {
   constructor(canvas, showStats, useControls) {
     super(canvas, showStats, useControls);
 
+    this.camera.position.z += 13;
     this.initMesh().then(mesh => {
       this.mesh = mesh;
     });
@@ -14,7 +15,7 @@ export default class Scene extends BasicScene {
     const loader = new THREE.JSONLoader();
     return new Promise(resolve => {
       loader.load('assets/suzanne.json', geometry => {
-        const material = new THREE.MeshStandardMaterial({ color: '#777'});
+        const material = new THREE.MeshStandardMaterial({ color: '#fff', metalness: 1, roughness: 0.7 });
         const wireframe = new THREE.WireframeGeometry(geometry);
         const line = new THREE.LineSegments(wireframe);
         line.scale.set(1.001, 1.001, 1.001);

@@ -244,14 +244,121 @@ class Presentation extends Component {
           <SceneViews.Slide18.View />
         </Slide>
         {/* 19 Continue sample */}
-        <Slide transition={['fade']} bgColor="background" getAppearStep={step => this.setStep('slide19', step)} >
+        <Slide bgColor="background" getAppearStep={step => this.setStep('slide19', step)} >
           {this.createSteps(SceneViews.Slide19.steps)}
           <SceneViews.Slide19.View step={this.state.slide19} />
         </Slide>
-        {/* 20 */}
+
+
+
+        {/* 20 Camera types */}
         <Slide transition={['fade']} bgColor="background">
         </Slide>
-        {/* 21 */}
+        {/* 21 Geometry types */}
+        <Slide transition={['fade']} bgColor="background" getAppearStep={step => this.setStep('slide21', step)} >
+          {this.createSteps(SceneViews.Slide21.steps)}
+          <SceneViews.Slide21.View step={this.state.slide21} />
+        </Slide>
+        {/* 22 Materials */}
+        <Slide transition={['fade']} bgColor="background">
+        </Slide>
+        {/* 23 Material settings */}
+        <Slide transition={['fade']} bgColor="background">
+        </Slide>
+        {/* 25 Light types */}
+        <Slide transition={['fade']} bgColor="background">
+        </Slide>
+        {/* 26 Cubemaps */}
+        <Slide transition={['fade']} bgColor="background">
+        </Slide>
+        {/* 27 Keyboard interaction */}
+        <Slide transition={['fade']} bgColor="background">
+        </Slide>
+        {/* 28 Mouse interaction */}
+        <Slide transition={['fade']} bgColor="background">
+        </Slide>
+        {/* 29 Animations */}
+        <Slide transition={['fade']} bgColor="background">
+        </Slide>
+        {/* 30 Loaders */}
+        <Slide transition={['fade']} bgColor="background">
+        </Slide>
+
+
+
+        {/* 31 Cooler things */}
+        <Slide transition={['fade']} bgColor="background">
+        </Slide>
+        {/* 32 Canvas renderer */}
+        <Slide transition={['fade']} bgColor="background">
+        </Slide>
+        {/* 33 Shape editor */}
+        <Slide transition={['fade']} bgColor="background">
+        </Slide>
+        {/* 34 iframe matrices */}
+        <Slide transition={['fade']} bgColor="background">
+        </Slide>
+        {/* 35 iframe vectors */}
+        <Slide transition={['fade']} bgColor="background">
+        </Slide>
+        {/* 36 iframe quaternions */}
+        <Slide transition={['fade']} bgColor="background">
+        </Slide>
+        {/* 36 iframe helpers */}
+        <Slide transition={['fade']} bgColor="background">
+        </Slide>
+        {/* 37 Buffer geometry */}
+        <Slide transition={['fade']} bgColor="background">
+        </Slide>
+        {/* 38 Custom attributes */}
+        <Slide transition={['fade']} bgColor="background">
+        </Slide>
+        {/* 38 Custom shaders */}
+        <Slide transition={['fade']} bgColor="background">
+        </Slide>
+        {/* 39 Particles systems */}
+        <Slide transition={['fade']} bgColor="background">
+        </Slide>
+        {/* 38 Render to texture */}
+        <Slide transition={['fade']} bgColor="background">
+        </Slide>
+        {/* 40 GPGPU */}
+        <Slide transition={['fade']} bgColor="background">
+        </Slide>
+        {/* 24 Video textures */}
+        <Slide transition={['fade']} bgColor="background">
+        </Slide>
+        {/* 41 Realtime reflections https://threejs.org/examples/webgl_materials_cubemap_dynamic2.html */}
+        <Slide transition={['fade']} bgColor="background">
+        </Slide>
+        {/* 41 mirror */}
+        <Slide transition={['fade']} bgColor="background">
+        </Slide>
+        {/* 41 Realtime refraction */}
+        <Slide transition={['fade']} bgColor="background">
+        </Slide>
+        {/* 45 Sky Shader */}
+        <Slide transition={['fade']} bgColor="background">
+        </Slide>
+        {/* 42 Roughness */}
+        <Slide transition={['fade']} bgColor="background">
+        </Slide>
+        {/* 43 Post processing */}
+        <Slide transition={['fade']} bgColor="background">
+        </Slide>
+        {/* 44 WebVR */}
+        <Slide transition={['fade']} bgColor="background">
+        </Slide>
+        {/* 45 Physics */}
+        <Slide transition={['fade']} bgColor="background">
+        </Slide>
+        {/* 46 Conclusion */}
+        <Slide transition={['fade']} bgColor="background">
+        </Slide>
+        {/* 47 Useful links */}
+        <Slide transition={['fade']} bgColor="background">
+        </Slide>
+        {/* 48 Questions */}
         <Slide transition={['fade']} bgColor="background">
         </Slide>
       </Deck>

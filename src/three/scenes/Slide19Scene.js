@@ -6,6 +6,7 @@ export default class Scene extends BasicScene {
   constructor(canvas, showStats, useControls) {
     super(canvas, showStats, useControls);
 
+    this.camera.position.z += 15;
     this.mesh = this.initMesh();
   }
 

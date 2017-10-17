@@ -11,6 +11,7 @@ export default class Scene {
       this.controls = this.initOrbitControls();
     }
     this.scene = this.initScene();
+    this.lights = this.initLights();
     if (showStats) {
       this.stats = this.initStats();
     }
@@ -27,11 +28,16 @@ export default class Scene {
       logarithmicDepthBuffer: true
     });
     renderer.setSize(this.canvas.width, this.canvas.height);
+    renderer.autoClear = true;
+    renderer.shadowMap.enabled = true;
+    renderer.physicallyCorrectLights = true;
+    renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+    renderer.shadowMapSoft = true;
     return renderer;
   }
 
   initCamera() {
-    const camera = new THREE.PerspectiveCamera(60, this.canvas.width / this.canvas.height, 1, 10000);
+    const camera = new THREE.PerspectiveCamera(45, this.canvas.width / this.canvas.height, 1, 10000);
     camera.position.setZ(30);
     return camera;
   }
@@ -44,9 +50,43 @@ export default class Scene {
 
   initScene() {
     const scene = new THREE.Scene();
-    scene.add(new THREE.HemisphereLight(0xffffff, 0x000000, 1));
-    scene.add(new THREE.AmbientLight(0xffffff, 1));
     return scene;
+  }
+
+  initLights() {
+    const hemisphereLight = new THREE.HemisphereLight(0xffffff, 0x000000, 1);
+    const ambientLight = new THREE.AmbientLight(0xffffff, 1);
+
+    const keyLight = new THREE.DirectionalLight('#fff', 1.7);
+    keyLight.castShadow = true;
+    keyLight.position.set(-80, 60, 80);
+
+    const fillLight = new THREE.DirectionalLight('#fff', 1.3);
+    fillLight.castShadow = true;
+    fillLight.position.set(80, 40, 40);
+
+    const rimLight = new THREE.DirectionalLight('#fff', 1.6);
+    rimLight.castShadow = true;
+    rimLight.position.set(-20, 80, -80);
+    this.scene.add(
+      hemisphereLight,
+      ambientLight,
+      keyLight,
+      fillLight,
+      rimLight
+    );
+
+    // const keyLightHelper = new THREE.DirectionalLightHelper(keyLight, 15);
+    // const fillLightHelper = new THREE.DirectionalLightHelper(fillLight, 15);
+    // const rimLightHelper = new THREE.DirectionalLightHelper(rimLight, 15);
+    // this.scene.add(keyLightHelper, rimLightHelper, fillLightHelper);
+    return {
+      hemisphereLight,
+      ambientLight,
+      keyLight,
+      fillLight,
+      rimLight
+    };
   }
 
   initStats() {
