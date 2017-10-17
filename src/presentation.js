@@ -153,6 +153,91 @@ class Presentation extends Component {
         <Slide transition={['fade']} bgColor="background">
           <SceneViews.Slide10.View />
         </Slide>
+        {/* 11 Threejs */}
+        <Slide transition={['fade']} bgImage="assets/three-bg.jpg" bgDarken={0.85}>
+          <Heading fit lineHeight={1} textColor="quartenary">
+            Three.js
+          </Heading>
+        </Slide>
+        {/* 12 About Three.js */}
+        <Slide transition={['fade']} bgImage="assets/three-bg.jpg" bgDarken={0.85}>
+          <Appear>
+            <Heading textColor="primary" textSize={200}>
+              36.000 &#9733;
+            </Heading>
+          </Appear>
+          <Appear>
+            <Heading textColor="quartenary" textSize={200}>
+              13.000 forks
+            </Heading>
+          </Appear>
+          <Appear>
+            <Heading fit textColor="primary" textSize={200}>
+              20.000 commits
+            </Heading>
+          </Appear>
+          <Appear>
+            <Heading fit textColor="quartenary" textSize={200}>
+              860 contributors
+            </Heading>
+          </Appear>
+        </Slide>
+        {/* 13 iframe documentation */}
+        <Slide transition={['fade']} bgColor="background">
+          <iframe
+            style={{
+              position: 'absolute',
+              left: '50%',
+              top: '50%',
+              width: window.innerWidth,
+              height: window.innerHeight,
+              transform: 'translate(-50%, -50%)'
+            }}
+            src="https://threejs.org/docs/index.html#manual/introduction/Creating-a-scene"
+          />
+        </Slide>
+        {/* 14 iframe examples */}
+        <Slide transition={['fade']} bgColor="background">
+          <iframe
+            style={{
+              position: 'absolute',
+              left: '50%',
+              top: '50%',
+              width: window.innerWidth,
+              height: window.innerHeight,
+              transform: 'translate(-50%, -50%)'
+            }}
+            src="https://threejs.org/examples/#webgl_gpgpu_water"
+          />
+        </Slide>
+        {/* 15 Suzanne monkey */}
+        <Slide transition={['fade']} bgColor="background">
+          <SceneViews.Slide15.View />
+          <Heading fit lineHeight={1} bold textColor="quartenary">
+            Hello Three.js
+          </Heading>
+        </Slide>
+        {/* 16 Three.js sample code*/}
+        <CodeSlide
+          transition={['fade']}
+          lang="jsx"
+          code={SceneViews.Slide17.code}
+          ranges={SceneViews.Slide17.ranges}
+        />
+        {/* 17 Three.js sample */}
+        <Slide transition={['fade']} bgColor="background">
+          <SceneViews.Slide17.View />
+        </Slide>
+        {/* 18 */}
+        <Slide transition={['fade']} bgColor="background">
+        </Slide>
+        {/* 19 */}
+        <Slide transition={['fade']} bgColor="background">
+        </Slide>
+        {/* 20 */}
+        <Slide transition={['fade']} bgColor="background">
+        </Slide>
+        {/* 21 */}
         <Slide transition={['fade']} bgColor="background">
         </Slide>
       </Deck>

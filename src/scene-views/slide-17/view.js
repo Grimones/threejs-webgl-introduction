@@ -1,35 +1,12 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { BasicScene } from '../../three/scenes';
-import { AppearBlock } from '../../components';
-
-const stepLabels = [
-  'testing',
-  'FUUU',
-  'SHIIIt',
-  'lolololo'
-];
-
-export const steps = stepLabels.length - 1;
+import { Slide17Scene } from '../../three/scenes';
 
 export class View extends Component {
   componentDidMount() {
-    this.scene = new BasicScene(this.threeCanvas);
+    this.scene = new Slide17Scene(this.canvas);
     this.scene.loopRender();
     window.addEventListener('resize', this.handleResize);
-  }
-
-  componentWillReceiveProps(nextProps) {
-    if (this.props.step !== nextProps.step) {
-      this.scene.setStep(nextProps.step);
-    }
-  }
-
-  shouldComponentUpdate(nextProps) {
-    if (this.props.step !== nextProps.step) {
-      return true;
-    }
-    return false;
   }
 
   componentWillUnmount() {
@@ -54,16 +31,11 @@ export class View extends Component {
           left: '50%',
           transform: 'translate(-50%, -50%)'
         }}>
-        <AppearBlock
-          label={stepLabels[this.props.step]}
-          backgroundColor="papayawhip"
-          textColor="tomato"
-        />
         <canvas
           style={{ position: 'absolute', left: 0, top: 0 }}
           width={window.innerWidth}
           height={window.innerHeight}
-          ref={ref => { this.threeCanvas = ref; }}
+          ref={ref => { this.canvas = ref; }}
         />
       </div>
     );
