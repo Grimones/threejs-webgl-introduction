@@ -203,7 +203,7 @@ export default class Scene extends BasicScene {
     mesh.pmrem.generator.update(this.renderer);
     mesh.pmrem.packer.update(this.renderer);
     mesh.visible = false;
-    mesh.cubeCamera.updateCubeMap(this.renderer, this.scene);
+    mesh.cubeCamera.update(this.renderer, this.scene);
     mesh.visible = true;
   }
 

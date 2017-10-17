@@ -4,12 +4,12 @@ import { Slide20Scene } from '../../three/scenes';
 import { AppearBlock } from '../../components';
 
 const stepLabels = [
-  '',
-  'const geometry = new THREE.SphereGeometry(3, 32, 32);',
-  'const geometry = new THREE.BoxGeometry(5, 5, 5);',
-  'const geometry = new THREE.CylinderGeometry(2, 2, 5, 32);',
-  'const geometry = new THREE.TorusGeometry(2.5, 0.75, 36, 36);',
-  ''
+  'const camera = new THREE.PerspectiveCamera(fov, aspect, near, far);',
+  'const camera = new THREE.PerspectiveCamera(fov, aspect, near, far);',
+  'const camera = new THREE.PerspectiveCamera(fov, aspect, near, far);',
+  'const camera = new THREE.PerspectiveCamera(fov, aspect, near, far);',
+  'const camera = new THREE.PerspectiveCamera(fov, aspect, near, far);',
+  'const camera = new THREE.OrthographicCamera(left, right, top, bottom, near, far);'
 ];
 
 export const steps = stepLabels.length - 1;

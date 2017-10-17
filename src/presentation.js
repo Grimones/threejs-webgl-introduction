@@ -11,7 +11,8 @@ import * as SceneViews from './scene-views';
 const theme = createTheme({
   primary: 'white',
   secondary: 'black',
-  quartenary: '#E2336E',
+  accent: '#E2336E',
+  quarternary: 'rgba(255, 255, 255, 0.1)',
   background: '#2D2D2D'
 }, {
   primary: { name: 'Roboto', googleFont: true, styles: ['400'] }
@@ -27,7 +28,9 @@ class Presentation extends Component {
 
     this.state = {
       slide5: 0,
-      slide19: 0
+      slide19: 0,
+      slide20: 0,
+      slide21: 0
     };
   }
 
@@ -49,6 +52,7 @@ class Presentation extends Component {
     return (
       <Deck
         theme={theme}
+        progress="bar"
         contentHeight={window.innerHeight}
         contentWidth={window.innerWidth - 100} >
         {/* 1  intro */}
@@ -67,7 +71,7 @@ class Presentation extends Component {
         </Slide>
         {/* 2 what is WebGL */}
         <Slide transition={['fade']} bgColor="background">
-          <Heading fit lineHeight={2} textColor="quartenary">
+          <Heading fit lineHeight={2} textColor="accent">
             Что такое WebGL?
           </Heading>
           <Appear>
@@ -108,7 +112,7 @@ class Presentation extends Component {
         {/* 4 Teapot */}
         <Slide transition={['fade']} bgColor="background">
           <SceneViews.Slide4.View />
-          <Heading fit lineHeight={2} bold textColor="quartenary">
+          <Heading fit lineHeight={2} bold textColor="accent">
             WebGL pipeline
           </Heading>
         </Slide>
@@ -119,7 +123,7 @@ class Presentation extends Component {
         </Slide>
         {/* 6 Things we need for render */}
         <Slide transition={['fade']} bgColor="background">
-          <Heading fit lineHeight={2} textColor="quartenary">
+          <Heading fit lineHeight={2} textColor="accent">
             Что необходимо для рендеринга?
           </Heading>
           <List textColor="primary">
@@ -156,7 +160,7 @@ class Presentation extends Component {
         </Slide>
         {/* 11 Threejs */}
         <Slide transition={['fade']} bgImage="assets/three-bg.jpg" bgDarken={0.85}>
-          <Heading fit lineHeight={1} textColor="quartenary">
+          <Heading fit lineHeight={1} textColor="accent">
             Three.js
           </Heading>
         </Slide>
@@ -168,17 +172,7 @@ class Presentation extends Component {
             </Heading>
           </Appear>
           <Appear>
-            <Heading textColor="quartenary" textSize={200}>
-              13.000 forks
-            </Heading>
-          </Appear>
-          <Appear>
-            <Heading fit textColor="primary" textSize={200}>
-              20.000 commits
-            </Heading>
-          </Appear>
-          <Appear>
-            <Heading fit textColor="quartenary" textSize={200}>
+            <Heading textColor="accent" textSize={200}>
               860 contributors
             </Heading>
           </Appear>
@@ -214,13 +208,13 @@ class Presentation extends Component {
         {/* 15 Suzanne monkey */}
         <Slide transition={['fade']} bgColor="background">
           <SceneViews.Slide15.View />
-          <Heading fit lineHeight={1} bold textColor="quartenary">
+          <Heading fit lineHeight={1} bold textColor="accent">
             Hello Three.js
           </Heading>
         </Slide>
         {/* 16 How Three.js works*/}
         <Slide transition={['fade']} bgColor="background">
-          <Heading fit lineHeight={1} textColor="quartenary">
+          <Heading fit lineHeight={1} textColor="accent">
             Как работает Three.js?
           </Heading>
           <List textColor="primary">
@@ -248,9 +242,6 @@ class Presentation extends Component {
           {this.createSteps(SceneViews.Slide19.steps)}
           <SceneViews.Slide19.View step={this.state.slide19} />
         </Slide>
-
-
-
         {/* 20 Camera types */}
         <Slide transition={['fade']} bgColor="background" getAppearStep={step => this.setStep('slide20', step)} >
           {this.createSteps(SceneViews.Slide20.steps)}
@@ -261,6 +252,9 @@ class Presentation extends Component {
           {this.createSteps(SceneViews.Slide21.steps)}
           <SceneViews.Slide21.View step={this.state.slide21} />
         </Slide>
+
+
+
         {/* 22 Materials */}
         <Slide transition={['fade']} bgColor="background">
         </Slide>

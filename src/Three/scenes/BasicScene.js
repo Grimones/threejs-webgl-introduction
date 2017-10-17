@@ -24,8 +24,8 @@ export default class Scene {
     const renderer = new THREE.WebGLRenderer({
       canvas: canvas,
       alpha: true,
-      antialias: true,
-      logarithmicDepthBuffer: true
+      antialias: true
+      // logarithmicDepthBuffer: true
     });
     renderer.setSize(this.canvas.width, this.canvas.height);
     renderer.autoClear = true;
@@ -45,6 +45,7 @@ export default class Scene {
   initOrbitControls() {
     const controls = new OrbitControls(this.camera, this.canvas);
     controls.enabled = true;
+    controls.enableKeys = false;
     return controls;
   }
 
