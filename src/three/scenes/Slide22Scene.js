@@ -13,7 +13,7 @@ export default class Scene extends BasicScene {
     this.lights.fillLight.intensity *= 1.5;
     this.lights.rimLight.intensity *= 1.5;
 
-    this.camera.position.setZ(32);
+    this.camera.position.setZ(20);
     this.camera.position.setY(3);
     this.lookAtVec = new THREE.Vector3(0, 1, 0);
 
@@ -101,127 +101,68 @@ export default class Scene extends BasicScene {
   setStep(step) {
     super.setStep(step);
     if (this.step === 0) {
-      anime({
-        targets: [this.camera.position, this.lookAtVec],
-        x: '0',
-        easing: 'easeInOutQuad',
-        duration: 700
-      });
-      anime({
-        targets: this.basic.mesh.position,
-        y: -2.5,
-        easing: 'easeInOutQuad',
-        duration: 700
-      });
+      this.moveCamera(0);
+      this.liftDown(this.basic.mesh);
     }
     if (this.step === 1) {
-      anime({
-        targets: [this.camera.position, this.lookAtVec],
-        x: '0',
-        easing: 'easeInOutQuad',
-        duration: 700
-      });
-      anime({
-        targets: this.basic.mesh.position,
-        y: 2.5,
-        easing: 'easeInOutQuad',
-        duration: 700
-      });
+      this.moveCamera(0);
+      this.liftUp(this.basic.mesh);
+      this.liftDown(this.lambert.mesh);
     }
     if (this.step === 2) {
-      anime({
-        targets: [this.camera.position, this.lookAtVec],
-        x: '10',
-        easing: 'easeInOutQuad',
-        duration: 700
-      });
-      anime({
-        targets: this.basic.mesh.position,
-        y: -2.5,
-        easing: 'easeInOutQuad',
-        duration: 700
-      });
-      anime({
-        targets: this.lambert.mesh.position,
-        y: 2.5,
-        easing: 'easeInOutQuad',
-        duration: 700
-      });
+      this.moveCamera(10);
+      this.liftDown(this.basic.mesh);
+      this.liftUp(this.lambert.mesh);
+      this.liftDown(this.phong.mesh);
     }
     if (this.step === 3) {
-      anime({
-        targets: [this.camera.position, this.lookAtVec],
-        x: '20',
-        easing: 'easeInOutQuad',
-        duration: 700
-      });
-      anime({
-        targets: this.lambert.mesh.position,
-        y: -2.5,
-        easing: 'easeInOutQuad',
-        duration: 700
-      });
-      anime({
-        targets: this.phong.mesh.position,
-        y: 2.5,
-        easing: 'easeInOutQuad',
-        duration: 700
-      });
+      this.moveCamera(20);
+      this.liftDown(this.lambert.mesh);
+      this.liftUp(this.phong.mesh);
+      this.liftDown(this.standard.mesh);
     }
     if (this.step === 4) {
-      anime({
-        targets: [this.camera.position, this.lookAtVec],
-        x: '30',
-        easing: 'easeInOutQuad',
-        duration: 700
-      });
-      anime({
-        targets: this.phong.mesh.position,
-        y: -2.5,
-        easing: 'easeInOutQuad',
-        duration: 700
-      });
-      anime({
-        targets: this.standard.mesh.position,
-        y: 2.5,
-        easing: 'easeInOutQuad',
-        duration: 700
-      });
+      this.moveCamera(30);
+      this.liftDown(this.phong.mesh);
+      this.liftUp(this.standard.mesh);
+      this.liftDown(this.physical.mesh);
     }
     if (this.step === 5) {
-      anime({
-        targets: [this.camera.position, this.lookAtVec],
-        x: '40',
-        easing: 'easeInOutQuad',
-        duration: 700
-      });
-      anime({
-        targets: this.standard.mesh.position,
-        y: -2.5,
-        easing: 'easeInOutQuad',
-        duration: 700
-      });
-      anime({
-        targets: this.physical.mesh.position,
-        y: 2.5,
-        easing: 'easeInOutQuad',
-        duration: 700
-      });
+      this.moveCamera(40);
+      this.liftDown(this.standard.mesh);
+      this.liftUp(this.physical.mesh);
     }
     if (this.step === 6) {
-      anime({
-        targets: [this.camera.position, this.lookAtVec],
-        x: '40',
-        easing: 'easeInOutQuad',
-        duration: 700
-      });
-      anime({
-        targets: this.physical.mesh.position,
-        y: -2.5,
-        easing: 'easeInOutQuad',
-        duration: 700
-      });
+      this.moveCamera(40);
+      this.liftDown(this.physical.mesh);
     }
+  }
+
+  moveCamera(x) {
+    anime({
+      targets: [this.camera.position, this.lookAtVec],
+      x: x,
+      easing: 'easeInOutQuad',
+      duration: 700
+    });
+  }
+
+  liftUp(mesh) {
+    anime({
+      targets: mesh.position,
+      y: 2.5,
+      easing: 'easeInOutQuad',
+      duration: 700
+    });
+  }
+
+  liftDown(mesh) {
+    anime({
+      targets: mesh.position,
+      y: -2.5,
+      easing: 'easeInOutQuad',
+      duration: 700
+    });
   }
 
   animate() {
