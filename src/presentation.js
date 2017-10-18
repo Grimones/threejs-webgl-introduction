@@ -33,7 +33,8 @@ class Presentation extends Component {
       slide21: 0,
       slide22: 0,
       slide23: 0,
-      slide24: 0
+      slide24: 0,
+      slide26: 0
     };
   }
 
@@ -275,16 +276,22 @@ class Presentation extends Component {
           {this.createSteps(SceneViews.Slide23.steps)}
           <SceneViews.Slide23.View step={this.state.slide23} />
         </Slide>
-        {/* 25 Light types */}
+        {/* 24 Light types */}
         <Slide transition={['fade']} bgColor="background" getAppearStep={step => this.setStep('slide24', step)} >
           {this.createSteps(SceneViews.Slide24.steps)}
           <SceneViews.Slide24.View step={this.state.slide24} />
         </Slide>
-        {/* 27 Interaction */}
+
+
+        {/* 25 Interaction */}
         <Slide transition={['fade']} bgColor="background">
         </Slide>
-        {/* 28 Mouse interaction */}
-        <Slide transition={['fade']} bgColor="background">
+
+
+        {/* 26 Mouse interaction */}
+        <Slide transition={['fade']} bgColor="background" getAppearStep={step => this.setStep('slide26', step)} >
+          {this.createSteps(SceneViews.Slide26.steps)}
+          <SceneViews.Slide26.View step={this.state.slide26} />
         </Slide>
         {/* 30 Loaders */}
         <Slide transition={['fade']} bgColor="background">
