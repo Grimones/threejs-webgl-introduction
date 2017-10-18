@@ -32,7 +32,8 @@ class Presentation extends Component {
       slide20: 0,
       slide21: 0,
       slide22: 0,
-      slide23: 0
+      slide23: 0,
+      slide24: 0
     };
   }
 
@@ -269,26 +270,20 @@ class Presentation extends Component {
           {this.createSteps(SceneViews.Slide22.steps)}
           <SceneViews.Slide22.View step={this.state.slide22} />
         </Slide>
-
-
         {/* 23 Material settings */}
         <Slide transition={['fade']} bgColor="background" getAppearStep={step => this.setStep('slide23', step)} >
           {this.createSteps(SceneViews.Slide23.steps)}
           <SceneViews.Slide23.View step={this.state.slide23} />
         </Slide>
         {/* 25 Light types */}
-        <Slide transition={['fade']} bgColor="background">
+        <Slide transition={['fade']} bgColor="background" getAppearStep={step => this.setStep('slide24', step)} >
+          {this.createSteps(SceneViews.Slide24.steps)}
+          <SceneViews.Slide24.View step={this.state.slide24} />
         </Slide>
-        {/* 26 Cubemaps */}
-        <Slide transition={['fade']} bgColor="background">
-        </Slide>
-        {/* 27 Keyboard interaction */}
+        {/* 27 Interaction */}
         <Slide transition={['fade']} bgColor="background">
         </Slide>
         {/* 28 Mouse interaction */}
-        <Slide transition={['fade']} bgColor="background">
-        </Slide>
-        {/* 29 Animations */}
         <Slide transition={['fade']} bgColor="background">
         </Slide>
         {/* 30 Loaders */}
@@ -298,6 +293,9 @@ class Presentation extends Component {
 
 
         {/* 31 Cooler things */}
+        <Slide transition={['fade']} bgColor="background">
+        </Slide>
+        {/* 29 Animations */}
         <Slide transition={['fade']} bgColor="background">
         </Slide>
         {/* 32 Canvas renderer */}
