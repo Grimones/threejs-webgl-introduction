@@ -4,20 +4,20 @@ import { Slide24Scene } from '../../three/scenes';
 import { AppearBlock } from '../../components';
 
 const stepLabels = [
-  '',
-  'this.mesh.position.x += 10',
-  'this.mesh.position.x -= 20',
-  'this.mesh.scale.set(2, 2, 2)',
-  'this.mesh.scale.setY(0.5)',
-  'this.mesh.rotation.y += THREE.Math.degToRad(90)',
-  'this.mesh.scale.setZ(0.5)',
-  'this.mesh.scale.setX(0.5)',
-  'this.mesh.scale.setX(0.5)',
-  'this.mesh.scale.setX(0.5)',
-  'this.mesh.scale.setX(0.5)',
-  'this.mesh.scale.setX(0.5)',
-  'this.mesh.scale.setX(0.5)',
-  'this.mesh.scale.setX(0.5)'
+  'const hemisphereLight = new THREE.HemisphereLight(0xffffff, 0x000000, 0);',
+  'hemisphereLight.intensity = 10',
+  'hemisphereLight.color.setRGB(0, 1, 0);',
+  'const directionalLight = new THREE.DirectionalLight(\'#fff\', 0)',
+  'directionalLight.intensity = 2',
+  'directionalLight.position.set(30, 40, 40)',
+  'const pointLight = new THREE.PointLight( \'#fff\', 0 )',
+  'pointLight.position.set(20, 5, 10)',
+  'const spotLight = new THREE.SpotLight( \'#fff\', 0, 0, Math.PI / 9, 0.4 );',
+  'spotLight.angle = Math.PI / 16',
+  'spotLight.angle = Math.PI / 8',
+  'spotLight.penumbra = 0',
+  'spotLight.penumbra = 0.8',
+  'spotLight.castShadow = true'
 ];
 
 export const steps = stepLabels.length - 1;

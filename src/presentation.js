@@ -216,7 +216,7 @@ class Presentation extends Component {
               height: window.innerHeight,
               transform: 'translate(-50%, -50%)'
             }}
-            src="https://threejs.org/examples/#webgl_gpgpu_water"
+            src="https://threejs.org/examples/webgl_gpgpu_water"
           />
         </Slide>
         {/* 15 Suzanne monkey */}
@@ -281,101 +281,489 @@ class Presentation extends Component {
           {this.createSteps(SceneViews.Slide24.steps)}
           <SceneViews.Slide24.View step={this.state.slide24} />
         </Slide>
-
-
-        {/* 25 Interaction */}
-        <Slide transition={['fade']} bgColor="background">
+        {/* 25 Interactions */}
+        <Slide transition={['fade']} bgImage="assets/three-bg.jpg" bgDarken={0.85}>
+          <Heading fit lineHeight={1} textColor="accent">
+            Interactions
+          </Heading>
         </Slide>
-
-
         {/* 26 Mouse interaction */}
         <Slide transition={['fade']} bgColor="background" getAppearStep={step => this.setStep('slide26', step)} >
           {this.createSteps(SceneViews.Slide26.steps)}
           <SceneViews.Slide26.View step={this.state.slide26} />
         </Slide>
-        {/* 30 Loaders */}
-        <Slide transition={['fade']} bgColor="background">
+        {/* 27 Cooler things */}
+        <Slide transition={['fade']} bgImage="assets/three-bg.jpg" bgDarken={0.85}>
+          <Heading fit lineHeight={1} textColor="accent">
+            Other things
+          </Heading>
         </Slide>
-
-
-
-        {/* 31 Cooler things */}
-        <Slide transition={['fade']} bgColor="background">
+        {/* 28 Loaders */}
+        <Slide transition={['fade']} bgImage="assets/three-bg.jpg" bgDarken={0.85}>
+          <Heading fit lineHeight={1} textColor="accent">
+            Loaders
+          </Heading>
+          <List textColor="primary">
+            <Appear><ListItem>json (three.js format)</ListItem></Appear>
+            <Appear><ListItem>gltf</ListItem></Appear>
+            <Appear><ListItem>obj</ListItem></Appear>
+            <Appear><ListItem>fbx</ListItem></Appear>
+            <Appear><ListItem>collada</ListItem></Appear>
+            <Appear><ListItem>...</ListItem></Appear>
+          </List>
         </Slide>
-        {/* 29 Animations */}
+        {/* 29 Loaders gltf */}
         <Slide transition={['fade']} bgColor="background">
+          <iframe
+            style={{
+              position: 'absolute',
+              left: '50%',
+              top: '50%',
+              width: window.innerWidth,
+              height: window.innerHeight,
+              transform: 'translate(-50%, -50%)'
+            }}
+            src="https://threejs.org/examples/webgl_loader_json_blender"
+          />
         </Slide>
-        {/* 32 Canvas renderer */}
         <Slide transition={['fade']} bgColor="background">
+          <iframe
+            style={{
+              position: 'absolute',
+              left: '50%',
+              top: '50%',
+              width: window.innerWidth,
+              height: window.innerHeight,
+              transform: 'translate(-50%, -50%)'
+            }}
+            src="https://threejs.org/examples/webgl_loader_gltf"
+          />
         </Slide>
-        {/* 33 Shape editor */}
+        {/* 30 Animations */}
         <Slide transition={['fade']} bgColor="background">
+          <iframe
+            style={{
+              position: 'absolute',
+              left: '50%',
+              top: '50%',
+              width: window.innerWidth,
+              height: window.innerHeight,
+              transform: 'translate(-50%, -50%)'
+            }}
+            src="https://threejs.org/examples/webgl_animation_skinning_morph"
+          />
         </Slide>
-        {/* 34 iframe matrices */}
+        {/* 31 Canvas renderer */}
         <Slide transition={['fade']} bgColor="background">
+          <iframe
+            style={{
+              position: 'absolute',
+              left: '50%',
+              top: '50%',
+              width: window.innerWidth,
+              height: window.innerHeight,
+              transform: 'translate(-50%, -50%)'
+            }}
+            src="https://threejs.org/examples/css3d_youtube"
+          />
         </Slide>
-        {/* 35 iframe vectors */}
+        {/* 32 Shape editor */}
         <Slide transition={['fade']} bgColor="background">
+          <iframe
+            style={{
+              position: 'absolute',
+              left: '50%',
+              top: '50%',
+              width: window.innerWidth,
+              height: window.innerHeight,
+              transform: 'translate(-50%, -50%)'
+            }}
+            src="https://threejs.org/examples/webgl_geometry_spline_editor"
+          />
         </Slide>
-        {/* 36 iframe quaternions */}
+        {/* 33 iframe matrices */}
         <Slide transition={['fade']} bgColor="background">
+          <iframe
+            style={{
+              position: 'absolute',
+              left: '50%',
+              top: '50%',
+              width: window.innerWidth,
+              height: window.innerHeight,
+              transform: 'translate(-50%, -50%)'
+            }}
+            src="https://threejs.org/docs/index.html#api/math/Matrix4"
+          />
+        </Slide>
+        {/* 34 iframe vectors */}
+        <Slide transition={['fade']} bgColor="background">
+          <iframe
+            style={{
+              position: 'absolute',
+              left: '50%',
+              top: '50%',
+              width: window.innerWidth,
+              height: window.innerHeight,
+              transform: 'translate(-50%, -50%)'
+            }}
+            src="https://threejs.org/docs/index.html#api/math/Vector3"
+          />
+        </Slide>
+        {/* 35 iframe quaternions */}
+        <Slide transition={['fade']} bgColor="background">
+          <iframe
+            style={{
+              position: 'absolute',
+              left: '50%',
+              top: '50%',
+              width: window.innerWidth,
+              height: window.innerHeight,
+              transform: 'translate(-50%, -50%)'
+            }}
+            src="https://threejs.org/docs/index.html#api/math/Quaternion"
+          />
         </Slide>
         {/* 36 iframe helpers */}
         <Slide transition={['fade']} bgColor="background">
+          <iframe
+            style={{
+              position: 'absolute',
+              left: '50%',
+              top: '50%',
+              width: window.innerWidth,
+              height: window.innerHeight,
+              transform: 'translate(-50%, -50%)'
+            }}
+            src="https://threejs.org/examples/webgl_helpers"
+          />
         </Slide>
         {/* 37 Buffer geometry */}
         <Slide transition={['fade']} bgColor="background">
+          <iframe
+            style={{
+              position: 'absolute',
+              left: '50%',
+              top: '50%',
+              width: window.innerWidth,
+              height: window.innerHeight,
+              transform: 'translate(-50%, -50%)'
+            }}
+            src="https://threejs.org/examples/webgl_buffergeometry_points"
+          />
         </Slide>
         {/* 38 Custom attributes */}
         <Slide transition={['fade']} bgColor="background">
+          <iframe
+            style={{
+              position: 'absolute',
+              left: '50%',
+              top: '50%',
+              width: window.innerWidth,
+              height: window.innerHeight,
+              transform: 'translate(-50%, -50%)'
+            }}
+            src="https://threejs.org/examples/webgl_custom_attributes_points2"
+          />
         </Slide>
-        {/* 38 Custom shaders */}
+        {/* 39 Custom shaders */}
         <Slide transition={['fade']} bgColor="background">
+          <iframe
+            style={{
+              position: 'absolute',
+              left: '50%',
+              top: '50%',
+              width: window.innerWidth,
+              height: window.innerHeight,
+              transform: 'translate(-50%, -50%)'
+            }}
+            src="https://threejs.org/examples/webgl_shaders_ocean2"
+          />
         </Slide>
-        {/* 39 Particles systems */}
+        {/* 40 Particles systems */}
         <Slide transition={['fade']} bgColor="background">
+          <iframe
+            style={{
+              position: 'absolute',
+              left: '50%',
+              top: '50%',
+              width: window.innerWidth,
+              height: window.innerHeight,
+              transform: 'translate(-50%, -50%)'
+            }}
+            src="https://threejs.org/examples/webgl_gpu_particle_system"
+          />
         </Slide>
-        {/* 38 Render to texture */}
+        {/* 41 Render to texture */}
         <Slide transition={['fade']} bgColor="background">
+          <iframe
+            style={{
+              position: 'absolute',
+              left: '50%',
+              top: '50%',
+              width: window.innerWidth,
+              height: window.innerHeight,
+              transform: 'translate(-50%, -50%)'
+            }}
+            src="https://threejs.org/examples/webgl_rtt"
+          />
         </Slide>
-        {/* 40 GPGPU */}
+        {/* 42 GPGPU */}
         <Slide transition={['fade']} bgColor="background">
+          <iframe
+            style={{
+              position: 'absolute',
+              left: '50%',
+              top: '50%',
+              width: window.innerWidth,
+              height: window.innerHeight,
+              transform: 'translate(-50%, -50%)'
+            }}
+            src="https://threejs.org/examples/webgl_gpgpu_birds"
+          />
         </Slide>
-        {/* 24 Video textures */}
+        {/* 43 Video textures */}
         <Slide transition={['fade']} bgColor="background">
+          <iframe
+            style={{
+              position: 'absolute',
+              left: '50%',
+              top: '50%',
+              width: window.innerWidth,
+              height: window.innerHeight,
+              transform: 'translate(-50%, -50%)'
+            }}
+            src="https://threejs.org/examples/webgl_materials_video"
+          />
         </Slide>
-        {/* 41 Realtime reflections https://threejs.org/examples/webgl_materials_cubemap_dynamic2.html */}
+        {/* 44 Realtime reflections https://threejs.org/examples/webgl_materials_cubemap_dynamic2.html */}
         <Slide transition={['fade']} bgColor="background">
+          <iframe
+            style={{
+              position: 'absolute',
+              left: '50%',
+              top: '50%',
+              width: window.innerWidth,
+              height: window.innerHeight,
+              transform: 'translate(-50%, -50%)'
+            }}
+            src="https://threejs.org/examples/webgl_materials_cubemap_dynamic2.html"
+          />
         </Slide>
-        {/* 41 mirror */}
+        {/* 45 mirror */}
         <Slide transition={['fade']} bgColor="background">
+          <iframe
+            style={{
+              position: 'absolute',
+              left: '50%',
+              top: '50%',
+              width: window.innerWidth,
+              height: window.innerHeight,
+              transform: 'translate(-50%, -50%)'
+            }}
+            src="https://threejs.org/examples/webgl_mirror"
+          />
         </Slide>
-        {/* 41 Realtime refraction */}
+        {/* 46 Realtime refraction */}
         <Slide transition={['fade']} bgColor="background">
+          <iframe
+            style={{
+              position: 'absolute',
+              left: '50%',
+              top: '50%',
+              width: window.innerWidth,
+              height: window.innerHeight,
+              transform: 'translate(-50%, -50%)'
+            }}
+            src="https://threejs.org/examples/webgl_materials_cubemap_refraction"
+          />
         </Slide>
-        {/* 45 Sky Shader */}
+        {/* 47 Sky Shader */}
         <Slide transition={['fade']} bgColor="background">
+          <iframe
+            style={{
+              position: 'absolute',
+              left: '50%',
+              top: '50%',
+              width: window.innerWidth,
+              height: window.innerHeight,
+              transform: 'translate(-50%, -50%)'
+            }}
+            src="https://threejs.org/examples/webgl_shaders_sky"
+          />
         </Slide>
-        {/* 42 Roughness */}
+        {/* 48 Post processing */}
         <Slide transition={['fade']} bgColor="background">
+          <iframe
+            style={{
+              position: 'absolute',
+              left: '50%',
+              top: '50%',
+              width: window.innerWidth,
+              height: window.innerHeight,
+              transform: 'translate(-50%, -50%)'
+            }}
+            src="https://threejs.org/examples/webgl_postprocessing_advanced"
+          />
         </Slide>
-        {/* 43 Post processing */}
+        {/* 49 post processing*/}
         <Slide transition={['fade']} bgColor="background">
+          <iframe
+            style={{
+              position: 'absolute',
+              left: '50%',
+              top: '50%',
+              width: window.innerWidth,
+              height: window.innerHeight,
+              transform: 'translate(-50%, -50%)'
+            }}
+            src="https://threejs.org/examples/webgl_postprocessing_dof2"
+          />
         </Slide>
-        {/* 44 WebVR */}
+        {/* 51 Physics */}
         <Slide transition={['fade']} bgColor="background">
+          <iframe
+            style={{
+              position: 'absolute',
+              left: '50%',
+              top: '50%',
+              width: window.innerWidth,
+              height: window.innerHeight,
+              transform: 'translate(-50%, -50%)'
+            }}
+            src="https://threejs.org/examples/webgl_physics_cloth"
+          />
         </Slide>
-        {/* 45 Physics */}
+        {/* 52 Physics */}
         <Slide transition={['fade']} bgColor="background">
+          <iframe
+            style={{
+              position: 'absolute',
+              left: '50%',
+              top: '50%',
+              width: window.innerWidth,
+              height: window.innerHeight,
+              transform: 'translate(-50%, -50%)'
+            }}
+            src="https://threejs.org/examples/webgl_physics_convex_break"
+          />
         </Slide>
-        {/* 46 Conclusion */}
+        {/* 53 Physics */}
         <Slide transition={['fade']} bgColor="background">
+          <iframe
+            style={{
+              position: 'absolute',
+              left: '50%',
+              top: '50%',
+              width: window.innerWidth,
+              height: window.innerHeight,
+              transform: 'translate(-50%, -50%)'
+            }}
+            src="https://threejs.org/examples/webgl_physics_volume"
+          />
         </Slide>
-        {/* 47 Useful links */}
+        {/* 54 Slide */}
         <Slide transition={['fade']} bgColor="background">
+          <iframe
+            style={{
+              position: 'absolute',
+              left: '50%',
+              top: '50%',
+              width: window.innerWidth,
+              height: window.innerHeight,
+              transform: 'translate(-50%, -50%)'
+            }}
+            src="https://whs-dev.surge.sh/examples/"
+          />
         </Slide>
-        {/* 48 Questions */}
+        {/* 55 Slide */}
         <Slide transition={['fade']} bgColor="background">
+          <iframe
+            style={{
+              position: 'absolute',
+              left: '50%',
+              top: '50%',
+              width: window.innerWidth,
+              height: window.innerHeight,
+              transform: 'translate(-50%, -50%)'
+            }}
+            src="http://idflood.github.io/ThreeNodes.js/index_optimized.html#example/rotating_cube1.json"
+          />
+        </Slide>
+        {/* 56 Slide */}
+        <Slide transition={['fade']} bgColor="background">
+          <iframe
+            style={{
+              position: 'absolute',
+              left: '50%',
+              top: '50%',
+              width: window.innerWidth,
+              height: window.innerHeight,
+              transform: 'translate(-50%, -50%)'
+            }}
+            src="https://aframe.io/"
+          />
+        </Slide>
+        {/* 57 Slide */}
+        <Slide transition={['fade']} bgColor="background">
+          <iframe
+            style={{
+              position: 'absolute',
+              left: '50%',
+              top: '50%',
+              width: window.innerWidth,
+              height: window.innerHeight,
+              transform: 'translate(-50%, -50%)'
+            }}
+            src="https://nunustudio.org/"
+          />
+        </Slide>
+        {/* 58 Slide */}
+        <Slide transition={['fade']} bgColor="background">
+          <iframe
+            style={{
+              position: 'absolute',
+              left: '50%',
+              top: '50%',
+              width: window.innerWidth,
+              height: window.innerHeight,
+              transform: 'translate(-50%, -50%)'
+            }}
+            src="https://yume.human-interactive.org/"
+          />
+        </Slide>
+        {/* 59 Slide */}
+        <Slide transition={['fade']} bgColor="background">
+          <iframe
+            style={{
+              position: 'absolute',
+              left: '50%',
+              top: '50%',
+              width: window.innerWidth,
+              height: window.innerHeight,
+              transform: 'translate(-50%, -50%)'
+            }}
+            src="http://www.babylonjs.com/"
+          />
+        </Slide>
+        {/* 60 Slide */}
+        <Slide transition={['fade']} bgColor="background">
+          <iframe
+            style={{
+              position: 'absolute',
+              left: '50%',
+              top: '50%',
+              width: window.innerWidth,
+              height: window.innerHeight,
+              transform: 'translate(-50%, -50%)'
+            }}
+            src="https://developer.playcanvas.com/en/"
+          />
+        </Slide>
+        {/* 61 Questions */}
+        <Slide transition={['fade']} bgImage="assets/three-bg.jpg" bgDarken={0.85}>
+          <Heading fit lineHeight={1} textColor="accent">
+            Вопросы?
+          </Heading>
         </Slide>
       </Deck>
     );

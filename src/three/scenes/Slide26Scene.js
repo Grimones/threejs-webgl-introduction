@@ -140,6 +140,7 @@ export default class Scene extends BasicScene {
         targets: this.camera.position,
         x: -800,
         y: 100,
+        z: -100,
         easing: 'easeInOutQuad',
         duration: 1700
       });

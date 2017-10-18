@@ -12,6 +12,7 @@ import * as Slide22 from './slide-22';
 import * as Slide23 from './slide-23';
 import * as Slide24 from './slide-24';
 import * as Slide26 from './slide-26';
+import * as Slide61 from './slide-61';
 
 export {
   Slide1,
@@ -27,5 +28,6 @@ export {
   Slide22,
   Slide23,
   Slide24,
-  Slide26
+  Slide26,
+  Slide61
 };
