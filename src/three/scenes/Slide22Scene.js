@@ -83,7 +83,6 @@ export default class Scene extends BasicScene {
 
   initCubeCamera() {
     const cubeCamera = new THREE.CubeCamera( 1, 2000, 256 );
-    cubeCamera.rotateY(Math.PI);
     cubeCamera.renderTarget.texture.generateMipmaps = true;
     cubeCamera.renderTarget.texture.anisotropy = 0;
     return cubeCamera;
