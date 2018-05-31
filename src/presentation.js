@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import 'normalize.css';
-import 'spectacle/lib/themes/default/index.css';
+
 import createTheme from 'spectacle/lib/themes/default';
 
 import { Deck, Slide, Heading, Appear, Text, Notes, List, ListItem } from 'spectacle';

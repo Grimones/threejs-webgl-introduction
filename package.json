@@ -49,7 +49,7 @@
     "react": "^15.6.1",
     "react-dev-utils": "^4.0.0",
     "react-dom": "^15.6.1",
-    "spectacle": "git://github.com/Grimones/spectacle.git#lib",
+    "spectacle": "^4.2.3",
     "spectacle-code-slide": "git://github.com/Grimones/spectacle-code-slide.git#lib",
     "stats.js": "^0.17.0",
     "style-loader": "0.18.2",
